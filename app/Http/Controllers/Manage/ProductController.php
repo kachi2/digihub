@@ -235,4 +235,21 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function processImages()
+    {
+      $product  = Product::get();
+            foreach($product as $prod)
+            {
+                $data = explode('/',$prod->image_path);
+            if(count($data) > 1){
+                $name = $data['9'];
+                $prod->update(['image_path' => $name, 'gallery' => json_encode([$name])]);
+                }else{
+                    $name = $prod->image_path;
+                    $prod->update(['image_path' => $name, 'gallery' => json_encode([$name])]);
+                }
+            }
+    }
 }

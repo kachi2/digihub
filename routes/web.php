@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Manage\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/process/products/names', [ProductController::class, 'processImages'])->name('processImages');
 
 
 require __DIR__.'/auth.php';

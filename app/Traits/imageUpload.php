@@ -14,6 +14,9 @@ trait imageUpload{
                 'height' => $height
        ]
         ])->getSecurePath();
+
+        $account_details = cloudinary();
+          dd($account_details);
         return  $image_url;
     }
 
