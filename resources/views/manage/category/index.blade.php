@@ -29,8 +29,6 @@
                                             <tr><th class="text-left">S/N</th>
                                                 <th>Category</th>
                                                 <th>Image</th>
-                                                <th>Markup</th>
-                                                <th>Inflated Percent</th>
                                                  <th>Created At</th>
                                                 <th></th>
                                             </tr>
@@ -48,13 +46,7 @@
                                             
                                                 <td>
                                                     <a href="#"><img src="{{$sp->image_path}}" width="50px" height="50px"></a> 
-                                                </td>  
-                                                <td>
-                                                    <a href="#">{{$sp->markup}}</a> 
-                                                </td>
-                                                <td>
-                                                    <a href="#">{{$sp->inflated}}</a> 
-                                                </td>      
+                                                </td>    
                                                   <td>
                                                     <a href="#">{{$sp->created_at->format('d/M/y')}}</a>
                                                 </td>

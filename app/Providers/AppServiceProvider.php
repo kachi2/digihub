@@ -44,5 +44,11 @@ class AppServiceProvider extends ServiceProvider
             $cat->hashid = Hashids::connection('products')->encode($cat->id);
         }
         View::share('site_categories', $categories);
+        $category = Category::get();
+        foreach($category as $cate){
+            addHashId($cate->products);
+            $cate->hashid = Hashids::connection('products')->encode($cate->id);
+        }
+        View::share('site_category', $category);
         }
 }

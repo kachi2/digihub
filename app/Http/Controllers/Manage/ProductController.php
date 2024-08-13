@@ -95,10 +95,11 @@ class ProductController extends Controller
         $valid = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required|integer',
-            'image' => 'required|mimes:png,jpg,jpeg,gif',
+            'image' => 'required',
             'description' => 'required',
-            'cost_price' => 'required',
+            'price' => 'required',
         ]);
+
         if ($valid->fails()) {
             Session::flash('alert', 'error');
             Session::flash('message', $valid->errors()->first());
@@ -106,37 +107,34 @@ class ProductController extends Controller
                 ->with('bheading', 'Product')
                 ->with('breadcrumb', 'Index');
         }
-
-        $cat = Category::where('id', $request->category_id)->first();
         DB::beginTransaction();
-        try {
+        // try {
             $prod = new Product;
             $prod->name = $request->name;
             $prod->category_id = $request->category_id;
             $prod->description = $request->description;
-            $prod->discount =  ((($request->cost_price * $cat->inflated) - ($request->cost_price * $cat->markup))/ ($request->cost_price * $cat->inflated)) *100;
-            $prod->cost_price = $request->cost_price;
-            $prod->price = $request->cost_price * $cat->inflated;
-            $prod->sale_price = $request->cost_price * $cat->markup;
-            $prod->requires_prescription= $request->requires_prescription??0;
-            $prod->sku = 'LVPH'.rand(11111,99999);
-            $prod->status = 0;
+            $prod->price = $request->price;
+            $prod->discount = (($request->price - $request->sale_price) / $request->price) * 100;
+            $prod->sale_price = $request->discount_price;
+            $prod->status = 1;
             if ($request->file('image')) {
-                $image =  $this->UploadImage($request, 'images/products/', 500,500);
+                $image =  $this->UploadImage($request, 'images/products/');
                 $prod->image_path = $image;
             }
             if ($request->file('images')) {
-                $images = $this->UploadImages($request, 'images/products/',500,500);
-                $prod->gallery = json_encode($images);
+                $images = $this->UploadImages($request, 'images/products/');
+                 $prod->gallery = json_encode($images);
             }
+         
             $prod->save();
             DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Session::flash('alert', 'error');
-            Session::flash('message', $e);
-            return redirect()->back()->withErrors($valid)->withInput($request->all());
-        }
+          
+        // }catch(\Exception $e) {
+            // DB::rollBack();
+            // Session::flash('alert', 'error');
+            // Session::flash('message', $e);
+            // return redirect()->back()->withErrors($valid)->withInput($request->all());
+        // }
 
         Session::flash('alert', 'success');
         Session::flash('message', 'Product Added Successfully');
@@ -182,36 +180,23 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $id = decodeHashid($id);
-        $valid = Validator::make($request->all(), [
-            'cost_price' => 'required',
-            'image' => 'mimes:png,jpg,jpeg,gif'
-        ]);
-        $cat = Category::where('id', $request->category_id)->first();
-        if ($valid->fails()) {
-            Session::flash('alert', 'error');
-            Session::flash('message', 'The fields with * are required');
-            return redirect()->back()->withErrors($valid)->withInput($request->all())
-                ->with('bheading', 'Product')
-                ->with('breadcrumb', 'Index');
-        }
         DB::beginTransaction();
         try {
             $prod = Product::where('id', $id)->first();
             $prod->name = $request->name;
             $prod->category_id = $request->category_id;
             $prod->description = $request->description;
-            $prod->discount =  ((($request->cost_price * $cat->inflated) - ($request->cost_price * $cat->markup))/ ($request->cost_price * $cat->inflated)) *100;
-            $prod->cost_price = $request->cost_price;
-            $prod->price = $request->cost_price * $cat->inflated;
-            $prod->sale_price = $request->cost_price * $cat->markup;
-            $prod->requires_prescription = $request->requires_prescription??0;
+            $prod->price = $request->price;
+            $prod->discount = (($request->price - $request->sale_price) / $request->price) * 100;
+            $prod->sale_price = $request->discount_price;
+            $prod->status = 1;
             if ($request->file('image')) {
-                $image =  $this->UploadImage($request, 'images/products/', 500,500);
+                $image =  $this->ImagesNoResize($request, 'images/products/');
                 $prod->image_path = $image;
             }
             if ($request->file('images')) {
-                $images = $this->UploadImages($request, 'images/products/', 500,500);
-                $prod->gallery = json_encode($images);
+                $images = $this->UploadImages($request, 'images/products/');
+                 $prod->gallery = json_encode($images);
             }
             if ($prod->save()) {
                 DB::commit();

@@ -57,9 +57,7 @@ class CategoryController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'image' => 'required',
-            'markup' => 'required|numeric',
-                'inflated' => 'required|numeric'
+            'image' => 'required'
         ]);
         if ($validate->fails()) {
             Session::flash('alert', 'error'); 
@@ -71,14 +69,13 @@ class CategoryController extends Controller
         }
 
         if ($request->file('image')) {
-            $fileName = $this->UploadImage($request, 'images/category/', 400,200);
+            $fileName =   $this->ImagesNoResize($request, 'images/category/');
+            // $fileName = $this->UploadImage($request, 'images/category/', 400,200);
         }
         //  dd($fileName);
         $data = [
             'name' => $request->name,
             'image_path' => $fileName,
-            'markup' => $request->markup,
-            'inflated' => $request->inflated,
         ];
         $category =  $this->category->create($data);
         if ($category) {
@@ -127,20 +124,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $valid = Validator::make($request->all(),[
-                'markup' => 'required|numeric',
-                'inflated' => 'required|numeric'
-        ]);
-        if($valid->fails()){
-            Session::flash('alert', 'error');
-            Session::flash('message', $valid->errors()->first());  
-        }
         $id = Hashids::connection('products')->decode($id);
         $category = category::where('id', $id)->first();
         $category->name = $request->name;
-
-        $category->markup = $request->markup;
-        $category->inflated = $request->inflated;
         if($request->file('image')){
             $category->image_path = $this->UploadImage($request, 'images/category/',800,500);
         }else{

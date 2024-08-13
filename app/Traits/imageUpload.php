@@ -14,9 +14,6 @@ trait imageUpload{
                 'height' => $height
        ]
         ])->getSecurePath();
-
-        $account_details = cloudinary();
-          dd($account_details);
         return  $image_url;
     }
 
@@ -42,7 +39,8 @@ trait imageUpload{
         $ext = $file->getClientOriginalExtension();
         $time = time() . $FileName;
         $fileName = $time . '.' . $ext;
-        Image::make($request->file('image'))->save($path.$fileName);
+        $file->move('images/'.$fileName);
+        // Image::make($request->file('image'))->save($path.$fileName);
         return $fileName;
     }
 }

@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                {{-- <li class="list-group-item">
+                                 <li class="list-group-item">
                                     <div class="flex-grow-1 min-width-0">
                                         <div class="mb-1 d-flex justify-content-between align-items-center">
                                             <div class="text-truncate app-list-title"> Slider Title</div>
@@ -105,7 +105,7 @@
                                             </div>
                                         </div>
                                     </div>              
-                                </li> --}}
+                                </li> 
                                 <div style="float:right" class="pr-5 pt-3">
                                     <button type="submit" class="btn btn-primary w-20">Add Slider</button>
                                 </div>

@@ -26,6 +26,9 @@ class CreateAdminsTable extends Migration
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->integer('status')->nullable();
+            $table->integer('otp')->nullable();
+            $table->integer('is_verified')->nullable();
+            $table->dateTime('otp_expiry')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

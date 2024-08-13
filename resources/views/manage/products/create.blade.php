@@ -16,24 +16,36 @@
                                         <div class="form-group">
                                             <input required type="text" name="name"  value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1"
                                                    aria-describedby="emailHelp" placeholder="Product name">
-                                            <small id="emailHelp" class="form-text text-muted">Product Name e.g Calender, Envelope
+                                            <small id="emailHelp" class="form-text text-muted">Product Name e.g Calender, Envelope templates
                                             </small> 
                                             @error('name')
                                             <span class="invalid-feedback"> <small> * </small> </span>
                                             @enderror
                                         </div>
                                     </div> 
-                                        <div class="col-md-12 col-12">
+                                        <div class="col-md-6 col-6">
                                         <div class="form-group">
-                                           <input required type="text" name="cost_price"  value="{{old('cost_price')}}" class="form-control @error('cost_price') is-invalid @enderror" id="exampleInput"
-                                                   aria-describedby="EventLocation" placeholder="Product Cost Price">
+                                           <input required type="text" name="price"  value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror" id="exampleInput"
+                                                   aria-describedby="EventLocation" placeholder="Product Price">
                                             <small id="emailHelp" class="form-text text-muted">Enter Cost Price 
                                             </small>
-                                            @error('cost_price')
+                                            @error('price')
                                             <span class="invalid-feedback"> <small> {{$message}} </small> </span>
                                             @enderror
                                         </div>
                                          </div>
+
+                                         <div class="col-md-6 col-6">
+                                          <div class="form-group">
+                                             <input required type="text" name="discount_price"  value="{{old('discount_price')}}" class="form-control @error('discount_price') is-invalid @enderror" id="exampleInput"
+                                                     aria-describedby="EventLocation" placeholder="Product discount Price">
+                                              <small id="emailHelp" class="form-text text-muted">Enter discount  Price 
+                                              </small>
+                                              @error('discount_price')
+                                              <span class="invalid-feedback"> <small> {{$message}} </small> </span>
+                                              @enderror
+                                          </div>
+                                           </div>
 
                                       <div class="col-md-12">
                                          <div class="form-group">
@@ -76,9 +88,8 @@
                                             @enderror
                                          </div>
 
-                                         
                                                <div class="col-md-6 pt-4">
-                                  <div class="custom-file">
+                                            <div class="custom-file">
                                             <input required type="file"name="images[]" multiple class="custom-file-input  @error('images') is-invalid @enderror" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose More Image</label>
                                             </div>
@@ -88,20 +99,6 @@
                                             <span class="invalid-feedback"> <small> *</small> </span>
                                             @enderror
                                          </div>
-
-                                         <div class="col-md-6 pt-4">
-                                          <div class="custom-file">
-                                            <label  for="requires_prescription">
-                                                    <input type="checkbox" value="1" style="width:15px; height:15px"  id="requires_prescription" name="requires_prescription"  class=" @error('requires_prescription') is-invalid @enderror" >
-                                                        This product requires prescription?
-                                                    </div>
-                                                  </label>
-                                                    <small id="emailHelp" class="form-text text-muted"> This product requires prescription?
-                                                    </small>
-                                                      @error('requires_prescription')
-                                                    <span class="invalid-feedback"> <small> *</small> </span>
-                                                    @enderror
-                                                 </div>
                                             
                             </div> 
                         </div>

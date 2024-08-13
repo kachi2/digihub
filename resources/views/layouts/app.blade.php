@@ -5,22 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <meta name="title" content="Shop Medicines Online at LiveHealth ePharma Store">
-    <meta name="description" content="Get your healthcare needs delivered at your doorstep from the No.1 online Pharmacy store. Get well with ease with Just a click of a button, Get your medications with convenience from the comfort of your home.">
+    <meta name="title" content="">
+    <meta name="description" content="">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="{{ asset('images/'.$settings->fav)}}" rel="shortcut icon" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="author" content="Live Health epharm">
-    <meta name="application-name" content="livehealthepharma Web-App">
-    <meta property="og:site_name" content="livehealthepharma: Online Pharmacy in Nigeria">
+    <meta name="application-name" content="">
+    <meta property="og:site_name" content="">
     <meta property="og:image" content="{{asset('images/'.$settings->site_logo)}}">
     <meta name="twitter:description" content="Online Pharmacy in Nigeria">
     <meta name="twitter:image" content="{{asset('images/'.$settings->site_logo)}}">
-    <meta property="og:description" content="The largest and biggest online pharmacy store in Nigeria. Easily get affordable medication and prescription drugs delivered to your doorstep. Get professional advice and consultation in real time">
-    <meta name="keywords" content="online prescription, online doctor prescription, online medicine delivery, medicine online, online medication prescription,  medical prescription, prescription doctor, medicine home delivery, medicine delivery, doctor prescription
-    chemists near me,  mail order pharmacy, dr online prescription, medical store near me,  rx doctor, rx pharmacy,  rx prescriptions, prescription medication online, medicine delivery near me, delivery pharmacy,  online medical store, rx online doctor, rx online, prescription delivery, pharmacy prescription, pharmacy, drug, eccomerce, buy drugs online, online pharmacy, doctors prescription">
+    <meta property="og:description" content="">
+    <meta name="keywords" content="">
     <meta property="og:url" content="{{route('users.index')}}">
-    <meta property="og:title" content="livehealthepharma: Online Pharmacy in Nigeria">
+    <meta property="og:title" content="">
     <title>{{$settings->title}} </title>
     <link rel="stylesheet" href="{{asset('/frontend/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('/frontend/fonts/Linearicons/Font/demo-files/demo.css')}}">
@@ -40,19 +39,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <meta name="p:domain_verify" content="41e4054dd47a348a28e771a36e9e5092"/>
     @yield('styles')
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11172431606"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8Q4Z4SFSQ">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G8Q4Z4SFSQ');
-</script>
 </head>
 <body>
     <div class="ps-page">
@@ -102,19 +88,6 @@ toastr.success(message);
     toastr.error(message);
 }        
      </script>
-     <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6575ebf907843602b800450a/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
 </body>
 </html>
 

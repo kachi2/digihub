@@ -26,11 +26,11 @@
                                     </div>
                                         <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                           <input type="text" name="cost_price"  value="{{$product->cost_price}}"class="form-control @error('cost_price') is-invalid @enderror" id="exampleInput"
-                                                   aria-describedby="EventLocation" placeholder="Product Cost Price">
-                                            <small id="emailHelp" class="form-text text-muted">Product cost price 
+                                           <input type="text" name="price"  value="{{$product->price}}"class="form-control @error('cost_price') is-invalid @enderror" id="exampleInput"
+                                                   aria-describedby="EventLocation" placeholder="Product  Price">
+                                            <small id="emailHelp" class="form-text text-muted">Product  price 
                                             </small>
-                                            @error('cost_price')
+                                            @error('price')
                                             <span class="invalid-feedback"> <small> {{$message}} </small> </span>
                                             @enderror
                                         </div>
@@ -38,11 +38,11 @@
 
                                       <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <input type="text" name="discount"  value="{{$product->discount}}%" disabled class="form-control @error('discount') is-invalid @enderror" id="exampleInputEmail1"
+                                            <input type="text" name="sale_price"  value="{{$product->sale_price}}"  class="form-control @error('sale_price') is-invalid @enderror" id="exampleInputEmail1"
                                                   aria-describedby="emailHelp" placeholder="Sale Price">
-                                            <small id="emailHelp" class="form-text text-muted">Discount
+                                            <small id="emailHelp" class="form-text text-muted">Discount Price
                                             </small>
-                                            @error('discount')
+                                            @error('sale_price')
                                             <span class="invalid-feedback"> <small> {{$message}}</small> </span>
                                             @enderror
                                         </div>           
@@ -118,19 +118,7 @@
                                   @endforeach
                                     @endif
                                          </div>
-                                         <div class="col-md-6 pt-4">
-                                          <div class="custom-file">
-                                            <label  for="requires_prescription">
-                                                    <input type="checkbox"  @if($product->requires_prescription == 1) checked @endif value="1" style="width:15px; height:15px"  id="requires_prescription" name="requires_prescription"  class=" @error('requires_prescription') is-invalid @enderror" >
-                                                        This product requires prescription?
-                                                    </div>
-                                                  </label>
-                                                    <small id="emailHelp" class="form-text text-muted"> This product requires prescription?
-                                                    </small>
-                                                      @error('requires_prescription')
-                                                    <span class="invalid-feedback"> <small> *</small> </span>
-                                                    @enderror
-                                                 </div>
+                                        
                                             
                             </div> 
 

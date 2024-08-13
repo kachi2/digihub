@@ -33,28 +33,7 @@
                                                       @error('image')
                                                     <span class="invalid-feedback"> <small> *</small> </span>
                                                     @enderror
-                                                 </div>   
-
-                                         <div class="col-md-6">
-                                          <div class="form-group">
-                                         <input type="text" name="markup" placeholder="markup" value="{{old('markup')}}" class="form-control @error('name') is-invalid @enderror" >
-                                               <small id="emailHelp" class="form-text text-muted">Enter Markup 
-                                               </small>
-                                               @error('markup')
-                                               <span class="invalid-feedback"> <small> * </small> </span>
-                                               @enderror
-                                           </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                              <div class="form-group">
-                                             <input type="text" name="inflated" placeholder="markup" value="{{old('inflated')}}" class="form-control @error('inflated') is-invalid @enderror" >
-                                                   <small id="emailHelp" class="form-text text-muted">Enter Inflated cap 
-                                                   </small>
-                                                   @error('inflated')
-                                                   <span class="invalid-feedback"> <small> * </small> </span>
-                                                   @enderror
-                                               </div>
-                                                </div>
+                                                 </div>  
 
                                               
                             </div> 
