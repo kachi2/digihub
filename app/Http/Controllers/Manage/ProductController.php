@@ -191,7 +191,7 @@ class ProductController extends Controller
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
             if ($request->file('image')) {
-                $image =  $this->ImagesNoResize($request, 'images/products/');
+                $image =  $this->UploadImage($request, 'images/products/');
                 $prod->image_path = $image;
             }
             if ($request->file('images')) {

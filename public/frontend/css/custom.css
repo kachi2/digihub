@@ -2,3 +2,36 @@
 {
   font-size:12px; font-weight:500; font-family:Verdana, Geneva, Tahoma, sans-serif; color:green
 }
+
+.add-to-cart
+{
+  margin-top:20px;
+  font-weight: 200px;
+}
+
+.add-to-cart a {
+  border:1px solid #000;
+  padding:2px;
+  border-radius: 10px;
+  float: right;
+}
+
+.cart-card:hover {
+  background: #eeeeee51;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 400px;
+}
+
+.add-to-cart-btn{
+  font-weight: 400;
+  padding:10px;
+  background: #103178!important;
+  border-radius: 10px;
+  color:#fff;
+  border: 0px;
+  width: 200px;
+  
+}

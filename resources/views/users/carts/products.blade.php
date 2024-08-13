@@ -11,84 +11,52 @@
        
         <div class="ps-page__content">
             <div class="row">
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-12 col-12">
                     <div class="ps-product--detail">
                         <div class="row">
-                            <div class="col-12 col-xl-5">
+                            <div class="col-12 col-xl-6">
                                 <div class="ps-product--gallery">
                                     <div class="ps-product__thumbnail">
                                         <div class="slide"><img src="{{$product->image_path }}" alt="{{$product->image_path }}" /></div>
                                         <div class="slide"><img src="{{$product->image_path }}" alt="{{$product->image_path }}" /></div>
                                     </div>
                                     <div class="ps-gallery--image">
-                                        <div class="slide">
+                                     
                                             @if($product->gallery)
-                                            
                                             @php 
-                                           
                                                 $images = json_decode($product->gallery);
                                             @endphp
                                             @foreach ($images as $item) 
+                                            <div class="slide">
                                             <div class="ps-gallery__item"><img src="{{$item }}" alt="{{$item }}" /></div>
+                                            </div>
                                             @endforeach
-                                            @else 
-                                            <div class="slide"><img src="{{$item }}" alt="{{$item }}" /></div>
                                             @endif
-                                        </div>
                                         
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-xl-7">
+                            <div class="col-12 col-xl-6">
                                 <div class="ps-product__info">
-                                    @if($product->status == 1)
-                                    <div class="ps-product__badge"><span class="ps-badge ps-badge--outstock">OUT OF STOCK</span>
-                                    </div>
-                                    @endif
-                                   
                                     <div class="ps-product__branch"><a href="{{route('products.search', $product->category->hashid )}}">{{$product->category->name}}</a></div>
                                     <div class="ps-product__title"><a href="#">{{$product->name}}</a></div>
-                                    <div class="ps-product__desc">
-                                        <ul class="ps-product__list">
-                                            <li>{!! substr($product->description,0,100) !!}</li>
-                                        </ul>
-                                    </div>
                                     <div class="ps-product__meta"><span class="ps-product__price" style="font-size:30px">{{moneyFormat($product->sale_price)}}
-                                        <span class="ps-product__del">{{moneyFormat($product->price)}}</span>
+                                        <span class="ps-product__del">{{moneyFormat($product->price)}}</span> <small style="font-size: 14px"> {{$product->discount}}% off</small>
                                     </div>
-                                    <div class="ps-product__type">
-                                        <ul class="ps-product__list">
-                                            <li> <span class="ps-list__title">SKU: </span><a class="ps-list__text" href="#">{{$product->sku}}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??null}}</div>
                                     <form id="myForm" enctype="multipart/form-data">
                                         @csrf
                                     <div class="ps-product__quantity">
-                                        <h6>Quantity:   
-
-                                             <button  type="button" class="ps-btn--success  decrement-btn" style="width: 30px; border-radius:3px; height:30px"> - </button> 
-                                             <input type="text" value="1" name="qty" id="qty" style="border: 1px solid #8c8a8a53; height:30px; width:30px; text-align:center"> 
-                                             <button  type="button" class="ps-btn--success  increment-btn" style="width: 30px; border-radius:3px; height:30px"> + </button>  </h6>
-                                     
-                                            @if($product->requires_prescription == 1)
-                                            <label for="precription_upload" > <span id="fileName" style="color:red" hidden> Upload file </span>
-                                            <div class="pb-3"><img src="{{asset('/upload.png')}}">
-                                            </div> 
-                                            <input type="file" id="precription_upload" name="image" style="border: none; visibility:hidden" > 
-                                            </label>
-                                            <br>
-                                            @endif
-
-                                            
                                         <div class="d-md-flex align-items-center">
                                             <div class="def-number-input number-input safari_only">
-                                            </div><button type="button" style="border-radius:5px" class="ps-btn ps-btn--success"  id="add2cart" 
-                                            @if($product->status == 1)
-                                            disabled @endif>Add to cart</button>
+                                            </div><button type="button" style="border-radius:5px" class="add-to-cart-btn"  id="add2cart">Add to cart</button>
                                         </div>
                                     </div>
                                     </form>
+                                    <div class="download-note"> 
+                                        <i class="fa fa-download"></i> 
+                                        Item will be available for download once payment is completed
+                                    </div>
                                     <div class="ps-product__social">
                                         <ul class="ps-social ps-social--color">
                                         Share this Product
@@ -104,30 +72,81 @@
                         <div class="ps-product__content">
                             <ul class="nav nav-tabs ps-tab-list" id="productContentTabs" role="tablist">
                                 <li class="nav-item" role="presentation"><a class="nav-link active" id="description-tab" data-toggle="tab" href="#description-content" role="tab" aria-controls="description-content" aria-selected="true">Description</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews-content" role="tab" aria-controls="reviews-content" aria-selected="false">Reviews (5)</a></li>
                             </ul>
                             <div class="tab-content" id="productContent">
                                 <div class="tab-pane fade show active" id="description-content" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="ps-document">
                                         <div class="row row-reverse">
-                                            <div class="col-12 col-md-6"><img class="ps-thumbnail" src="img/products/pressure-tab-content.jpg" alt></div>
+                                            <div class="col-12 col-md-6"><img class="ps-thumbnail" src="" alt></div>
                                             <div class="col-12 col-md-6">
-                                                <h2 class="ps-title">{{$product->name}}</h2>
-                                                <div class="ps-subtitle">{{$product->title??null}}</div>
+                                                <p class="">{{$product->name}}</p>
                                                 <p> {!! $product->description !!}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="reviews-content" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="ps-product__tabreview">
+                                        <div class="ps-review--product">
+                                            <div class="ps-review__row">
+                                                <div class="ps-review__avatar"><img src="img/avatar/avatar-review3.html" alt="alt" /></div>
+                                                <div class="ps-review__info">
+                                                    <div class="ps-review__name">Jenna S.</div>
+                                                    <div class="ps-review__date">Oct 30, 2021</div>
+                                                </div>
+                                                <div class="ps-review__rating">
+                                                    <select class="ps-rating" data-read-only="true">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4" selected="selected">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="ps-review__desc">
+                                                    <p>I ordered on Friday evening and on Monday at 12:30 the package was with me. I have never encountered such a fast order processing.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ps-form--review">
+                                        <div class="ps-form__title">Write a review</div>
+                                        <div class="ps-form__desc">Your email address will not be published. Required fields are marked *</div>
+                                        <form action="https://nouthemes.net/html/mymedi/do_action" method="post">
+                                            <div class="row">
+                                                <div class="col-12 col-lg-4">
+                                                    <label class="ps-form__label">Your rating *</label>
+                                                    <select class="ps-rating--form" data-value="0">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-6 col-lg-4">
+                                                    <label class="ps-form__label">Name *</label>
+                                                    <input class="form-control ps-form__input">
+                                                </div>
+                                                <div class="col-6 col-lg-4">
+                                                    <label class="ps-form__label">Email *</label>
+                                                    <input class="form-control ps-form__input">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ps-form__block">
+                                                        <label class="ps-form__label">Your review *</label>
+                                                        <textarea class="form-control ps-form__textarea"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 text-center">
+                                                    <button class="btn ps-btn ps-btn--warning">Add Review</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3">
-                    <div class="ps-product--extension">
-                        <div class="ps-product__delivery">
-                            <div class="ps-delivery__item"><i class="icon-wallet"></i>Very secured paymenet methods</div>
-                            <div class="ps-delivery__item"><i class="icon-bag2"></i>Shipping will be calculated on checkout</div>
-                            <div class="ps-delivery__item"><i class="icon-wallet"></i>Please note that price may increase due to  exchange rate, ensure updated price before making payment</div>
                         </div>
                     </div>
                 </div>
@@ -158,8 +177,6 @@
                                 <div class="ps-product__actions ps-product__group-mobile">
                                     {{-- <div class="ps-product__cart"> <a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcart">Add to cart</a></div> --}}
                                 </div>
-                               
-                                
                                <center> <a href="{{route('users.products',[$prod->hashid, $prod->productUrl])}}" class="btn btn-success spinner-border spinner-border-sm"> Add to Cart</a></center> 
                             </div>
                         

@@ -22,14 +22,14 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         $slider = Slider::latest()->get();
-        $data['latest'] = Product::latest()->inRandomOrder()->take(6)->get();
+        $data['popular'] = Product::take(4)->orderBy('views', 'DESC')->get();
         $data['topProducts1'] = Product::orderBy('views', 'DESC')->take(6)->get();
         $data['productCat1'] = Product::where('category_id', 24)->inRandomOrder()->take(9)->get();
         $data['productCat2'] = Product::where('category_id', 3)->inRandomOrder()->take(9)->get();
         $data['productCat3'] = Product::where('category_id', 1)->inRandomOrder()->take(9)->get();
         $data['productCat4'] = Product::where('category_id', 4)->inRandomOrder()->take(9)->get();
         $data['advert'] = Product::inRandomOrder()->take(3)->get();
-        addHashId($data['latest']);
+        addHashId($data['popular']);
         addHashId($data['topProducts1']);
         addHashId( $data['productCat1']);
         addHashId( $data['productCat2']);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Review;
 use Vinkla\Hashids\Facades\Hashids;
 
 if(!function_exists('trimInput')){
@@ -64,6 +65,44 @@ if(!function_exists('convertPercent')){
 
     function convertPercent($number, $percent){
         return ($number*$percent)/100;
+    }
+}
+if(!function_exists('displayImageOrVideo')){
+function displayImageOrVideo($file, $width=null, $height=null)
+{
+
+    $files = explode('.', $file);
+    if($files > 1)
+    {
+    switch($files[1])
+    {
+        case 'mp4': 
+            $file = asset('images/'.$file);
+        $output = 
+        " <video muted  width='$width' height='$height' autoplay loop>
+                <source src='$file' type='video/mp4'>  
+            </video>
+        ";
+        break;
+        default:
+        $output = "<img src='$file'   alt='$file' />";
+    }
+ 
+    return $output;
+    }
+    return $file;
+}
+}
+
+if(!function_exists('productRating'))
+{
+    function productRating($product_id)
+    {
+        $rate = Review::where('product_id', $product_id)->get();
+        $data['sum'] = $rate->sum()??0;
+        $data['count'] = $rate->count()??0;
+        $data['average'] = $data['sum']??1/ $data['count']??1;
+        return $data;
     }
 }
 
