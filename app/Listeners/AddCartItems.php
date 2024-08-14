@@ -39,7 +39,6 @@ class AddCartItems implements ShouldQueue
                 'image' => $cart->model->image_path,
                 'product_name' => $cart->model->name,
                 'price' => $cart->model->sale_price,
-                'product_prescription' => $cart->options->image??null
             ];
             CartItem::create($data);
           }

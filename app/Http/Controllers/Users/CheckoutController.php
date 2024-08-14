@@ -41,67 +41,34 @@ class CheckoutController extends Controller
             return redirect()->intended(route('users.index'));
         }
         $carts = \Cart::content();
-        $shipping_fee = 0;
         $orderNo = rand(111111111,999999999);
-
-        $address = ShippingAddress::where(['user_id' => auth_user()->id, 'is_default' =>1])->first();
-        if(!isset($address)){
-            Session::flash('alert', 'error');
-            Session::flash('msg', 'Please add a shipping address before you can proceed');
-            return redirect()->intended(route('users.account.address'));
-        }
-        $states = ShipmentLocation::where('states', 'LIKE', ucfirst($address->state))->first();
-            if(isset($states)){
-        if(ucfirst(strtolower($states->states)) == 'Lagos'){  
-            $gidi = [
-                'location_to' => $address->city
-            ];
-            $response = $this->checkGidiRates($gidi);
-            if(isset($response['data']['result'])){
-            $shipping_fee = $response['data']['result'];
-            }
-        }else{
-            $naijaship = [
-                "destination" => $states->location,
-                "weight" => 0.5
-            ];
-            $response =  $this->checkNaijaRates($naijaship);  
-            if(isset($response['data']['fee'])){
-            $shipping_fee = $response['data']['fee'];
-            }
-        }
-        if($shipping_fee <= 0){
-            Session::flash('alert', 'error');
-            Session::flash('msg', 'Could not get shipping Fee, the address provided is wrong, please edit and try again');
-        }
-        
-    }else{
-        Session::flash('alert', 'error');
-        Session::flash('msg', 'Network error occured, could not get shipping fee');
-    }
-
 
         $cart = Hashids::connection('products')->decode($cartSession);
         $check = CartItem::where(['user_id' => auth_user()->id, 'cartSession' => $cart])->first();
         if(!isset($check) || empty($check)){
             event(new CartItemsEvent($carts, $orderNo, $cartSession));
-        }
-         $date['start'] = Carbon::now()->addDay(3);
-         $date['end'] = Carbon::now()->addDay(6);
-
-         
-        return view('users.carts.checkout', $date)
+        } 
+        return view('users.carts.checkout')
         ->with('carts', $carts)
-        ->with('address', $address)
-        ->with('orderNo', $orderNo)
-        ->with('shipping_fee',  $shipping_fee);
+        ->with('orderNo', $orderNo);
     }
 
     public function RegisterUser(Request $request){
-        $userck = User::where('email', $request->email)->first();
+
+        $valid = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required'
+        ]);
+        if($valid->fails()){
+            Session::flash('alert', 'error');
+            Session::flash('msg', 'Some fields are missing');
+            return back()->withInput($request->all())->withErrors($valid);
+        }
+        $userck = User::where('email', $request->email)->exists();
         if($userck){
             Session::flash('alert', 'error');
-            Session::flash('msg', 'This email address is already taken');
+            Session::flash('msg', 'This email address is already taken, please login to continue');
             return back()->withInput($request->all());
         }
         $register = new RegisterUser;

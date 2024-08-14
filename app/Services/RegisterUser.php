@@ -33,11 +33,10 @@ class RegisterUser {
             'phone' => $request->phone,
             'password' => hash::make($pass),
         ];
-        User::create($datas);
-        $user = User::latest()->first();
+        $user = User::create($datas);
         Auth::loginUsingId($user->id);
-       $data['password'] =  $pass;
-       Mail::to($data['email'])->send(new RegMail($datas));
+       $datas['password'] =  $pass;
+       Mail::to($request->email)->send(new RegMail($datas));
         return $datas;
     }
 

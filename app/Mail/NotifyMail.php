@@ -30,6 +30,6 @@ class NotifyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('superadmin@livehealthepharma.com', 'Livehealth Support')->subject($this->data['subject'])->view('mails.notify')->with('data', $this->data);
+        return $this->from('superadmin@mazeoptions.com', 'Livehealth Support')->subject($this->data['subject'])->view('mails.notify')->with('data', $this->data);
     }
 }
