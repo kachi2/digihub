@@ -17,7 +17,7 @@
                     <li><a class="ps-header__item open-search" href="{{route('login')}}"><i class="icon-magnifier"></i></a></li>
                     <a class="" href="{{route('login')}}">Sign in</a> 
                     {{-- <a class="" href="javascript:void(0);">Sign up</a> --}}
-                    <li><a class="ps-header__item" href="#" id="cart-mini"><i class="icon-cart-empty"></i> <span class="badge">0</span></a></li>
+                    <li><a class="ps-header__item" href="{{route('carts.index')}}" id="cart-mini"><i class="icon-cart-empty"></i> <span class="badge">{{Cart::count()}}</span></a></li>
                 </ul>
                 <div class="ps-header__search">
                     <form action="" method="post">

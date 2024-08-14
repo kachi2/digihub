@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Review;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Traits\imageUpload;
@@ -236,5 +237,41 @@ class ProductController extends Controller
                     $prod->update(['image_path' => $name, 'gallery' => json_encode([$name])]);
                 }
             }
+    }
+
+    public function productRating(Request $request)
+    {
+
+
+        if(!auth_user()){
+            Session::flash('alert', 'danger');
+            Session::flash('message', 'You  must login before rating a product');
+            return back();
+        }
+        $data = [
+            'message' => $request->message,
+            'rating' => $request->rating,
+            'user_id' => auth_user()?->id,
+            'product_id' => $request->product_id
+        ];
+      
+    $check = Review::where(['user_id' => auth_user()?->id, 'product_id' => $request->product_id])->first();
+    dd($check);
+    if($check)
+    {
+        Session::flash('alert', 'danger');
+        Session::flash('message', 'You have rated this product');
+        return back();   
+    }
+
+      $creat =  Review::create($data);
+      if($creat){
+        Session::flash('alert', 'success');
+        Session::flash('message', 'Review Added Successfully');
+        return back();
+      }
+      Session::flash('alert', 'danger');
+      Session::flash('message', 'An error occured');
+      return back();
     }
 }

@@ -36,18 +36,9 @@ class RegisterUser {
         User::create($datas);
         $user = User::latest()->first();
         Auth::loginUsingId($user->id);
-        sleep(1);
-        $data['address'] = $request->address;
-        $data['city'] = $request->city;
-        $data['state'] = $request->state;
-        $data['country'] = $request->country;
-        $data['user_id'] = $user->id;
-        $data['is_default'] = 1;
-        $data['name'] = $user->first_name.''.$user->last_name;
-       $ship = ShippingAddress::create($data);
        $data['password'] =  $pass;
        Mail::to($data['email'])->send(new RegMail($datas));
-        return $ship;
+        return $datas;
     }
 
 }

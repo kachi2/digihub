@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateProductResourcesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('product_resources', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->foreignId('user_id')->nullable();
-            $table->tinyText('message')->nullable();
+            $table->text('resource')->nullable();
+            $table->string('resouce_type')->nullable();
+            $table->integer('total_download')->nullable();
             $table->integer('status')->nullable();
-            $table->integer('rating')->nullable();
+            $table->dateTime('last_downloaded')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('product_resources');
     }
 }

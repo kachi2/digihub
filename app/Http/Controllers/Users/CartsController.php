@@ -19,21 +19,17 @@ use imageUpload;
      {   
       // return response()->json($request);
          $product = Product::find($id);
-         if(isset($request->image)){
-            $file = $this->UploadImage($request, '/carts/images');
-         }
+        //  if(isset($request->image)){
+        //     $file = $this->UploadImage($request, '/carts/images');
+        //  }
          $response = Cart::add([
              'id' => $product->id,
              'name' => $product->name,
              'price' => $product->sale_price,
-             'options' => [
-              'image' => $file??null
-              ],
-             'qty' => $request->qty,
+             'qty' => 1,
              'image' => $product->image, 
              'weight'=>1, 
          ])->associate(Product::class);
-       
          if($response){
           return response()->json($response);
 

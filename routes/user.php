@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Manage\ProductController;
 use App\Http\Controllers\Users\PageController;
 use App\Http\Controllers\Users\AddressController;
 use Illuminate\Support\Facades\Route;
@@ -82,3 +83,5 @@ Route::get('upload/sitemap', [SiteMapController::class, 'SiteMap'])->name('site.
 Route::get('blogs', [BlogController::class, 'Index'])->name('blogs.index');
 Route::get('blogs/details/{id}', [BlogController::class, 'Details'])->name('blogs.details');
 Route::get('/faq', [FaqController::class, '__invoke'])->name('faq.index');
+
+Route::post('/product/rating', [ProductController::class, 'productRating'])->name('user.addReview');

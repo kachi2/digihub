@@ -98,14 +98,76 @@ if(!function_exists('productRating'))
 {
     function productRating($product_id)
     {
+        $data['average'] = 0;
         $rate = Review::where('product_id', $product_id)->get();
-        $data['sum'] = $rate->sum()??0;
+        $data['sum'] = $rate->sum('rating')??0;
         $data['count'] = $rate->count()??0;
-        $data['average'] = $data['sum']??1/ $data['count']??1;
+        if($data['count'] > 0) $data['average'] = $data['sum'] / $data['count'];
         return $data;
     }
 }
 
+if(!function_exists('RatingCounting'))
+{
+    function RatingCounting($count)
+    {
+        $output = '';
+        switch($count){
+            case 5: 
+              $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+              $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+              $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+              $output .=   "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+              $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+              break;
+
+         case $count > 4  && $count < 5: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=   "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star-half-o' style='color:rgb(175, 92, 14)'> </i>";
+            break;
+            case 4: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=   "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+            break;
+        case $count > 3  && $count < 4: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star-half-o' style='color:rgb(175, 92, 14)'> </i>";
+
+            break;
+            case 3: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+            break;
+            case $count > 2  && $count < 3: 
+                $output  .= "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star-half-o' style='color:rgb(175, 92, 14)'> </i>";
+
+            break;
+            case 2: 
+                $output  .= "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+
+            break;
+            case $count > 1  && $count < 2: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+                $output .=  "<i class='fa fa-star-half-o' style='color:rgb(175, 92, 14)'> </i>";
+            break;
+            case 1: 
+                $output  = "<i class='fa fa-star' style='color:rgb(175, 92, 14)'> </i>";
+            break;
+        }
+        return $output;
+    }
+}
 
 }
 

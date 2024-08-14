@@ -37,25 +37,43 @@
                     </div>
                     <div class="ps-categogy--grid">
                         <div class="row m-0">
-                            @forelse ($products as $prods )
-                            <div class="col-6 col-lg-4 col-xl-3 p-0">
-                                <div class="ps-product ps-product--standard">
-                                    <div class="ps-product__thumbnail"><a class="ps-product__image" href="{{route('users.products',[$prods->hashid, $prods->productUrl])}}">
-                                            <figure><img src="{{$prods->image_path}}" alt="{{$prods->image_path}}"><img src="{{$prods->image_path }}" alt="{{$prods->image_path }}">
-                                            </figure>
-                                        </a>
-                                        <div class="ps-product__badge">
-                                            <span class="badge badge-warning"> -{{number_format($prods->discount,0)}}%</span>
+                            @forelse ($products as $prod )
+                            <div class="col-6 col-md-6 col-lg-3 p-0">
+                                <div class="ps-section__product " >
+                                    <div class="ps-product ps-product--standard cart-card">
+                                        <div class="ps-product__thumbnail ">
+                                            <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:180px">
+                                                <figure>
+                                                    @php echo displayImageOrVideo($prod->image_path); @endphp
+                                                
+                                                </figure>
+                                            </a>
+                                            <div class="ps-product__badge">
+                                                {{-- <div class="ps-badge ps-badge--sold">Sold Out</div> --}}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="ps-product__content">
-                                        <h5 class="ps-product__tite"><a href="{{route('users.products',[$prods->hashid, $prods->productUrl])}}">{{$prods->name}}</a></h5>
-                                        <div class="ps-product__meta"><span class="ps-product__price">{{moneyFormat($prods->sale_price)}}</span>
-                                        <span class="ps-product__price "> <small> <del> {{moneyFormat($prods->price)}}</del> </small></span>
+                                        <div class="ps-product__content">
+                                            <h5 class=""><a href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}">{{ $prod->name}}</a>
+                                            <span style="float: right;"> 
+                                                <i class="fa fa-star"> </i> 
+                                                 @php 
+                                                    $prod_rating = productRating($prod->id);
+                                                   echo number_format($prod_rating['average'],1);
+                                                   echo '('.number_format($prod_rating['count']).')';
+                                                    @endphp
+                                            </span>
+                                            </h5>
+                                            <div class="ps-product__meta"><span class="ps-product__price sale">{{ moneyFormat($prod->sale_price) }} </span><span class="ps-product__del">{{ moneyFormat($prod->price) }}</span>
+                                               <small style="color:#434242b5"> ({{ number_format($prod->discount)}}% off) </small> 
+                                          
+                                            </div>
+                                            <span class="download-note"> 
+                                                <i class="fa fa-cloud-download"> </i> Digital Download</span> 
+                                                <span class="add-to-cart">  <a style="font-size:14px; font-weight:300" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}"> <i class="fa fa-plus"> </i> Add to basket</a>  
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             @empty
                             <div class="ps-delivery ps-delivery--info">
                                 <div class="ps-delivery__content">

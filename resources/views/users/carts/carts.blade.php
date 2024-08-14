@@ -28,8 +28,8 @@
                                 <span class="ps-product__del" style="font-size:15px">{{moneyFormat($cart->model->price)}}</span>
                             </div>
                             <ul class="ps-product__list">
-                                <li> <span class="ps-list__title">SKU: </span><a class="ps-list__text" href="#">{{$cart->model->sku}}</a>
-                                </li>
+                                {{-- <li> <span class="ps-list__title">SKU: </span><a class="ps-list__text" href="#">{{$cart->model->sku}}</a>
+                                </li> --}}
                             </ul>
                             <button  type="submit" name="qty" value="{{$cart->qty -1 }}" class="ps-btn--success  decrement-btn" style="width: 30px; border-radius:3px; height:30px"> - </button> 
                             <input type="text" value="{{$cart->qty}}"  class="qty" style="border: 1px solid #8c8a8a53; height:30px; width:30px; text-align:center"> 
@@ -80,7 +80,8 @@
                             <div class="ps-shopping__label">Total</div>
                             <div class="ps-shopping__price">₦{{\Cart::priceTotal()}}</div>
                         </div>
-                        <div class="ps-shopping__text">Shipping options will be updated during checkout.</div> 
+                        <div class=""><i class="fa fa-cloud-download"> </i> Digital Download</div> 
+                        <small> Download link will be available once payment is completed </small>
                        
                         <div class="ps-shopping__checkout">
                         <a class="ps-btn ps-btn--success"  style="border-radius:5px" href="{{route('checkout.index',$cartSession)}}">Proceed to checkout</a>
@@ -94,41 +95,52 @@
     </div>
 </div>
 <div style="height: 2em; background:#eee"></div>
-<section class="ps-section--latest" style="margin-top:5px">
-    <div class="container" style="background: #f4f3f33f; padding:10px; border:5px solid #ede8e836">
-        <p class="" style="font-size: 20px; color:#000;">Latest products</p>
-        <div class="ps-section__carousel">
-            <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="13000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="5" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="5" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
-           
-                @forelse ($latest as $prod)
-                <div class="ps-section__product">
-                    <div class="ps-product ps-product--standard">
-                        <div class="ps-product__thumbnail"><a class="ps-product__image" href="product1.html">
-                            {{-- <figure><img src="{{asset('/frontend/img/products/016.jpg')}}" alt="alt" /><img src="{{asset('/frontend/img/products/021.jpg')}}" alt="alt" /> --}}
-                                    <figure><img src="{{$prod->image_path}}" alt="{{$prod->image_path}}" /><img src="{{$prod->image_path}}" alt="{{$prod->image_path}}" />
+<section class="ps-section--featured" style="padding:20px">
+    <p class="section-title">Related Products</p >
+    <div class="ps-section__content">
+        <div class="row m-0">
+
+            @forelse($latest as $prod)
+            <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="ps-section__product " >
+                    <div class="ps-product ps-product--standard cart-card">
+                        <div class="ps-product__thumbnail ">
+                            <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:300px">
+                                <figure>
+                                    @php echo displayImageOrVideo($prod->image_path); @endphp
+                                
                                 </figure>
                             </a>
-                            <div class="ps-product__badge" style="right:20px; ">
-                                <div class="ps-badge ps-badge--hot" style="background: rgb(225, 136, 136); border-radius:3px; padding:0 0;">-{{number_format($prod->discount)}}%</div>
+                            <div class="ps-product__badge">
+                                {{-- <div class="ps-badge ps-badge--sold">Sold Out</div> --}}
                             </div>
                         </div>
                         <div class="ps-product__content">
-                            <h5 class="ps-p"><a href="product1.html">{{$prod->name}}</a></h5>
-                            <div class="ps-product__meta"><span class="ps-pr">{{moneyFormat($prod->sale_price)}}   <span style="font-size:15px"> <del> {{moneyFormat($prod->price)}}</del></span></span></span>
+                            <h5 class=""><a href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}">{{ $prod->name}}</a>
+                            <span style="float: right;"> 
+                                <i class="fa fa-star"> </i> 
+                                 @php 
+                                    $prod_rating = productRating($prod->id);
+                                   echo number_format($prod_rating['average'],1);
+                                   echo '('.number_format($prod_rating['count']).')';
+                                    @endphp
+                            </span>
+                            </h5>
+                            <div class="ps-product__meta"><span class="ps-product__price sale">{{ moneyFormat($prod->sale_price) }} </span><span class="ps-product__del">{{ moneyFormat($prod->price) }}</span>
+                               <small style="color:#434242b5"> ({{ number_format($prod->discount)}}% off) </small> 
+                          
                             </div>
-                            <div class="ps-product__actions ps-product__group-mobile">
-                                <div class="ps-product__cart"> <a class="ps-btn ps-btn--warning" href="#" data-toggle="modal" data-target="#popupAddcart">Add to cart</a></div>
-                            </div>
-                           <center> <a href="{{route('users.products',[$prod->hashid, $prod->productUrl])}}" class="btn btn-success"> Add to Cart</a></center> 
+                            <span class="download-note"> 
+                                <i class="fa fa-cloud-download"> </i> Digital Download</span> 
+                               
+                                <span class="add-to-cart">  <a style="font-size:14px; font-weight:300" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}"> <i class="fa fa-plus"> </i> Add to basket</a>  
                         </div>
-                    
                     </div>
-                </div> 
-                @empty
-
-                
-                @endforelse
+                </div>
             </div>
+            @empty 
+            @endforelse
+
         </div>
     </div>
 </section>
