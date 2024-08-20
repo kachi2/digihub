@@ -8,8 +8,7 @@
                     href="{{route('users.account.index')}}"> <i class="icon-user"> </i> &nbsp;Account </a></li>
             <li><a class="dropdown-item navIL" href="{{route('users.orders')}}"> <i class=" icon-cart"> </i> &nbsp;
                     Orders</a></li>
-            <li><a class="dropdown-item navIL" href="{{route('users.account.address')}}"> <i class="icon-book"> </i> &nbsp; Address
-                    Book</a></li>
+          
             <li><a class="dropdown-item navIL" href="{{route('users.recent.views')}}"><i class="icon-clock"> </i> &nbsp;
                     Recently Viewed</a></li>
             <li><a class="dropdown-item navIL" href="{{route('users.order.payments')}}"> <i class="icon-wallet"> </i>&nbsp; Card

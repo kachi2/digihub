@@ -52,7 +52,7 @@ use imageUpload;
         return view('users.carts.carts') 
         ->with('carts', Cart::content())
         ->with('latest', $prod)
-        ->with('cartSession', Hashids::connection('products')->encode(rand(11,99)))
+        ->with('cartSession', Hashids::connection('products')->encode(rand(11111,99999)))
         ->with('breadcrumb', 'Shopping Cart');
     }
 

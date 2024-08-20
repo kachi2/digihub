@@ -1,4 +1,4 @@
-<footer class="ps-footer ps-footer--8" style="background: #03300f">
+<footer class="ps-footer ps-footer--8" style="background: #103178d2 !important">
 
     <div class="container">
         <div class="ps-footer__middle" >
@@ -53,7 +53,6 @@
                                 <ul class="ps-block__list">
                                     <li><a href="{{route('users.account.index')}}">My account</a></li>
                                     <li><a href="{{route('users.orders')}}">My orders</a></li>
-                                    <li><a href="{{route('users.account.address')}}">Address Book</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -76,16 +75,16 @@
         <div class="ps-footer--bottom">
             <div class="row">
                 <div class="col-12 col-md-4" style="background: #fff">
+                </div>
+                <div class="col-12 col-md-4" style="background: #fff">
                     <p style="color:#000">{{$settings->site_copyright}}</p>
                 </div>
-                <div class="col-12 col-md-8 text-right" style="background: #fff">
+                <div class="col-12 col-md-4 text-right" style="background: #fff">
                     <img src="{{asset('/images/paystack_logo.png')}}"  width="70px" alt>
-                    <img class="payment-light" src="{{asset('/images/paystack.png')}}"      width="120px"alt>
-                    <img class="payment-light" src="{{asset('/images/nafdac.png')}}"      width="120px"alt>
-                    <img class="payment-light" src="{{asset('/images/secure_ssl.png')}}"  width="120px" alt>
-                    <img class="payment-light" src="{{asset('/images/mastercard.png')}}"  width="120px"alt>
-                    <img class="payment-light" src="{{asset('/images/visa.png')}}"  width="120px" alt>
-                    <img class="payment-light" src="{{asset('/images/pcn.png')}}"  width="120px"alt>
+                    <img class="payment-light" src="{{asset('/images/paystack.png')}}"      width="50px"alt>
+                    <img class="payment-light" src="{{asset('/images/secure_ssl.png')}}"  width="50px" alt>
+                    <img class="payment-light" src="{{asset('/images/mastercard.png')}}"  width="50px"alt>
+                    <img class="payment-light" src="{{asset('/images/visa.png')}}"  width="50px" alt>
                 </div>
             </div>
         </div>

@@ -117,18 +117,14 @@
                                
                             </div>
                             <div class="m-4" style="">
-                                <button class="ps-btn ps-btn--success w-100" style="border-radius: 5px"> Update Account</button>
+                                <button class="ps-btn ps-btn--primary w-100" style="border-radius: 5px"> Update Account</button>
                             </div>
                         </div>
                     </div>
                    </form>
 
                 </div>
-
-
-
             </div>
-
         </div>
     </div>
 </div>

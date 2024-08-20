@@ -29,6 +29,6 @@ class paymentMail extends Mailable
      */
     public function build()
     {
-        return $this->from('superadmin@mazeoptions.com', 'Livehealth Support')->subject('Payment Details')->view('mails.paymentMail')->with('data', $this->data);
+        return $this->from('support@mazeoptions.com', 'Livehealth Support')->subject('Payment Details')->view('mails.paymentMail')->with('data', $this->data);
     }
 }

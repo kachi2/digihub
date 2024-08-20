@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Notification;
+use App\Services\PaymentService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Vinkla\Hashids\Facades\Hashids;
@@ -22,7 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
+        $this->app->singleton(PaymentService::class, function($app){
+            return new PaymentService();
+        });
     }
 
     /**

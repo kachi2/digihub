@@ -36,11 +36,11 @@
                  @if(Session::has('alert'))
                  <span class="badge bg-{{Session::get('alert')}} p-2"> {{Session::get('msg')}}</span>
                  @endif
-                        <div class="col-12 col-md-12 col-lg-12" style="background: #fff; border-radius:10px">
-                            <p class="m-4" style="color:#332d2d"> <i class="fa fa-check-square-o"
-                                    style="color:rgb(79, 81, 79)"></i>
-                                Contact Information </p>
-                            <hr>
+                 <div class="col-12 col-md-12 col-lg-12 mt-0"
+                 style="background: #878484;  border-radius: 10px 10px 0px 0px">
+                 <p class="m-4" style="color:#ffffff; font-weight:bolder"> Contact Information</p>
+                            </div>
+                      <div class="col-12 col-md-12 col-lg-12 mt-0 " style="background:#fff">
                             <div class="row m-3">
                                 <div class="col-12 col-md-6 ">
                                     <div class="ps-form__group">
@@ -99,12 +99,6 @@
                             </div>
                         </div>
                   
-
-                        <div class="col-12 col-md-12 col-lg-12 mt-3" style="background: #fff;  border-radius:10px">
-                            <p class="m-4" style="color:rgb(114, 111, 111)"> <i class="fa fa-check-square-o"
-                                style="color:rgb(114, 111, 111)"></i> Shipping Method</p>
-
-                        </div>
 
                         <div class="col-12 col-md-12 col-lg-12 mt-3" style="background: #fff;  border-radius:10px">
                             <p class="m-4" style="color:rgb(114, 111, 111)"><i class="fa fa-check-square-o"

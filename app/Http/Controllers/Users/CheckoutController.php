@@ -9,6 +9,7 @@ use App\Models\ShipmentLocation;
 use Illuminate\Http\Request;
 use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Hash;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Vinkla\Hashids\Facades\Hashids;
@@ -37,14 +38,13 @@ class CheckoutController extends Controller
            return  $check->viewCheckout();
         }
 
-        if(count(\Cart::content()) <= 0 || empty(\Cart::content())){
+        if(count(Cart::content()) <= 0 || empty(Cart::content())){
             return redirect()->intended(route('users.index'));
         }
-        $carts = \Cart::content();
+        $carts = Cart::content();
         $orderNo = rand(111111111,999999999);
 
-        $cart = Hashids::connection('products')->decode($cartSession);
-        $check = CartItem::where(['user_id' => auth_user()->id, 'cartSession' => $cart])->first();
+        $check = CartItem::where(['user_id' => auth_user()->id, 'cartSession' => $cartSession])->first();
         if(!isset($check) || empty($check)){
             event(new CartItemsEvent($carts, $orderNo, $cartSession));
         } 
