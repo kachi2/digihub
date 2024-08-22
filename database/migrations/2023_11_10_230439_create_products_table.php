@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('order_count')->nullable();
             $table->string('sku')->nullable();
             $table->integer('status')->nullable();
+            $table->string('public_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

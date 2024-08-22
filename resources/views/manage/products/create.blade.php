@@ -23,6 +23,17 @@
                                             @enderror
                                         </div>
                                     </div> 
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                          <input required type="text" name="title"  value="{{old('title')}}" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
+                                                 aria-describedby="emailHelp" placeholder="Product specification">
+                                          <small id="emailHelp" class="form-text text-muted">Brief Description of the product
+                                          </small> 
+                                          @error('title')
+                                          <span class="invalid-feedback"> <small> * </small> </span>
+                                          @enderror
+                                      </div>
+                                  </div> 
                                         <div class="col-md-6 col-6">
                                         <div class="form-group">
                                            <input required type="text" name="price"  value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror" id="exampleInput"
@@ -66,7 +77,6 @@
 
                                         <div class="col-md-12">
                                           <div class="form-group">
-                                            
                                             <textarea required id="summernote" class="@error('description') is-invalid @enderror" name="description">{{old('description')}}</textarea>
                                             <small id="emailHelp" class="form-text text-muted">Product Description
                                                     </small>
@@ -99,6 +109,18 @@
                                             <span class="invalid-feedback"> <small> *</small> </span>
                                             @enderror
                                          </div>
+
+                                         <div class="col-md-12 pt-4">
+                                          <div class="custom-file">
+                                          <input required type="file" name="docs[]" multiple class="custom-file-input  @error('docs') is-invalid @enderror" id="customFile">
+                                              <label class="custom-file-label" for="customFile">Add Product Files</label>
+                                          </div>
+                                          <small id="emailHelp" class="form-text text-muted"> Add the actual files users can download after successful payment, files can be PDF, Word files, Excel, etc.
+                                          </small>
+                                            @error('docs')
+                                          <span class="invalid-feedback"> <small> *</small> </span>
+                                          @enderror
+                                       </div>
                                             
                             </div> 
                         </div>
@@ -118,7 +140,7 @@
                         </div>
                   </form>
 
-    </div>
+                      </div>
                         </div>
                     </div>
                    

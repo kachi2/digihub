@@ -48,16 +48,6 @@
              </ul>
          </li>
 
-         
-         <li>
-            <a  href="" data-toggle="tooltip" data-placement="right" title="Manage Blogs"
-               data-nav-target="#dashboards">
-                <i class="fa fa-newspaper-o"></i>&nbsp;Prescriptions</a>
-                <ul>
-                    <li><a href="{{route('admin.prescription')}}">View all</a></li>
-                </ul>
-        </li>  
-
         <li>
             <a  href="" data-toggle="tooltip" data-placement="right" title="View and Manage Users"
                data-nav-target="#dashboards">

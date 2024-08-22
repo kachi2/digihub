@@ -33,7 +33,6 @@
                                                 <th>Discount Percentage</th>
                                                 <th>Image</th>
                                                 <th>Views</th>
-                                                <th> Requires Prescription</th>
                                                 <th>Status</th>
                                                  <th>Created At</th>
                                                 <th></th>
@@ -65,10 +64,7 @@
                                                     <a href="#">{{$sp->views}}</a>
                                                 </td> 
                                                 <td>
-                                                    <a href="#">@if($sp->requires_prescription == 0 ) No @else  Yes @endif</span> </a>
-                                                </td> 
-                                                <td>
-                                                    <a href="#">@if($sp->status == 0 ) <span class="badge bg-success"> active</span> @else <span class="badge bg-info"> Disabled </span> @endif</span> </a>
+                                                    <a href="#">@if($sp->status == 1 ) <span class="badge bg-success"> active</span> @else <span class="badge bg-info"> Disabled </span> @endif</span> </a>
                                                 </td>      
                                                   <td>
                                                     <a href="#">{{$sp->created_at->format('d/M/y')}}</a>

@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->integer('is_paid')->default(0);
             $table->integer('is_delivered')->default(0);
             $table->integer('dispatch_status')->default(0);
+            $table->tinyText('resources')->nullable();
             $table->timestamps();
         });
     }

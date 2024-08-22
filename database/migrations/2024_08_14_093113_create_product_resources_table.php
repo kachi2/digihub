@@ -21,6 +21,7 @@ class CreateProductResourcesTable extends Migration
             $table->integer('total_download')->nullable();
             $table->integer('status')->nullable();
             $table->dateTime('last_downloaded')->nullable();
+            $table->string('public_id')->nullable();
             $table->timestamps();
         });
     }

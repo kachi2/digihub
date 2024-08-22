@@ -168,9 +168,30 @@ if(!function_exists('RatingCounting'))
         return $output;
     }
 }
-
 }
 
+if(!function_exists('getFileType'))
+{
+    function getFileType($ext)
+    {
+        switch($ext)
+        {
+            case 'docx'||'doc' || 'wpd' || 'wps'||'odt'||'pages':
+                return "Word Documents";
+                break;
+            case 'pdf' || 'PDF':
+                return 'PDF Documents';
+                break;
+            case 'XLSX' || 'XLS' || 'ODS':
+                return "Spreadsheet Documents";
+                break; 
+            case 'PPTX' || 'PPT' || 'ODP':
+                return "Presentation Document";
+                break;
+            return "Editable Document";
+        }
+    }
+}
 
 
 

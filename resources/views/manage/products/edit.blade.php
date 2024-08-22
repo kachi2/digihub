@@ -24,9 +24,20 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                          <input required type="text" name="title"  value="{{$product->title}}" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
+                                                 aria-describedby="emailHelp" placeholder="Product specification">
+                                          <small id="emailHelp" class="form-text text-muted">Brief Description of the product
+                                          </small> 
+                                          @error('title')
+                                          <span class="invalid-feedback"> <small> * </small> </span>
+                                          @enderror
+                                      </div>
+                                  </div> 
                                         <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                           <input type="text" name="price"  value="{{$product->price}}"class="form-control @error('cost_price') is-invalid @enderror" id="exampleInput"
+                                           <input type="text" name="price"  value="{{$product?->price}}"class="form-control @error('cost_price') is-invalid @enderror" id="exampleInput"
                                                    aria-describedby="EventLocation" placeholder="Product  Price">
                                             <small id="emailHelp" class="form-text text-muted">Product  price 
                                             </small>
@@ -38,11 +49,11 @@
 
                                       <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <input type="text" name="sale_price"  value="{{$product->sale_price}}"  class="form-control @error('sale_price') is-invalid @enderror" id="exampleInputEmail1"
+                                            <input type="text" name="discount_price"  value="{{$product?->sale_price}}"  class="form-control @error('discount_price') is-invalid @enderror" id="exampleInputEmail1"
                                                   aria-describedby="emailHelp" placeholder="Sale Price">
                                             <small id="emailHelp" class="form-text text-muted">Discount Price
                                             </small>
-                                            @error('sale_price')
+                                            @error('discount_price')
                                             <span class="invalid-feedback"> <small> {{$message}}</small> </span>
                                             @enderror
                                         </div>           
@@ -68,7 +79,6 @@
                               </div>
                                          <div class="col-md-12">
                                   <div class="form-group">
-                                    
                                     <textarea id="summernote" name="description"> {{$product->description}}</textarea>
                                      <small id="emailHelp" class="form-text text-muted">Product Description
                                             </small>
@@ -76,14 +86,9 @@
                                             <span class="invalid-feedback"> <small> *</small> </span>
                                             @enderror
                                     </div>
-
-
                                          </div>
-
-                                         
-
-
-                                               <div class="col-md-12">
+                                    
+                                         <div class="col-md-12">
                                   <div class="custom-file">
                                         <input type="file"name="image" class="custom-file-input  @error('image') is-invalid @enderror" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose Cover Image</label>
@@ -118,6 +123,19 @@
                                   @endforeach
                                     @endif
                                          </div>
+
+                                         <div class="col-md-12 pt-4">
+                                 
+                                          <div class="custom-file">
+                                          <input  type="file" name="docs[]" value="{{$product?->resources?->resource}}" multiple class="custom-file-input  @error('docs') is-invalid @enderror" id="customFile">
+                                              <label class="custom-file-label" for="customFile">Add Product Files</label>
+                                          </div>
+                                          <small id="emailHelp" class="form-text text-muted"> Add the actual files users can download after successful payment, files can be PDF, Word files, Excel, etc.
+                                          </small>
+                                            @error('docs')
+                                          <span class="invalid-feedback"> <small> *</small> </span>
+                                          @enderror
+                                       </div>
                                         
                                             
                             </div> 

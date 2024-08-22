@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $fillable = [
 
-        'category_id', 'name', 'title', 'cost_price', 'description', 'specification', 'image_path', 'price',  'gallery', 'sale_price', 'discount', 'views', 'order_count', 'sku', 'qty', 'status'
+        'category_id', 'name', 'title', 'cost_price', 'description', 'specification', 'image_path', 'price',  'gallery', 'sale_price', 'discount', 'views', 'order_count', 'sku', 'qty', 'status','public_id'
     ];
 
     protected $table = "products";
@@ -23,5 +23,10 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class)->where('status', 1);
+    }
+
+    public function resources()
+    {
+        return $this->hasOne(ProductResource::class, 'product_id', 'id');
     }
 }

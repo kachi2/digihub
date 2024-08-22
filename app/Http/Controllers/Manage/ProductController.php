@@ -7,10 +7,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductResource;
 use App\Models\Review;
 use App\Models\Setting;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use App\Traits\imageUpload;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Vinkla\Hashids\Facades\Hashids;
@@ -57,13 +60,13 @@ class ProductController extends Controller
             DB::table('products')->where('id', decodeHashid($id))
                 ->update(['status' => 1]);
             Session::flash('alert', 'error');
-            Session::flash('message', 'Product Disabled successfully');
+            Session::flash('message', 'Product Enabled successfully');
             return redirect()->back();
         } elseif ($request->status == 0) {
             DB::table('products')->where('id', decodeHashid($id))
-                ->update(['status' => 0]);
+                ->update(['status' => 2]);
             Session::flash('alert', 'success');
-            Session::flash('message', 'Product Enabled successfully');
+            Session::flash('message', 'Product Disabled successfully');
             return redirect()->back();
         } else {
             Session::flash('alert', 'error');
@@ -109,33 +112,32 @@ class ProductController extends Controller
                 ->with('breadcrumb', 'Index');
         }
         DB::beginTransaction();
-        // try {
+        try {
             $prod = new Product;
             $prod->name = $request->name;
             $prod->category_id = $request->category_id;
             $prod->description = $request->description;
             $prod->price = $request->price;
-            $prod->discount = (($request->price - $request->sale_price) / $request->price) * 100;
+            $prod->discount = (($request->price - $request->discount_price) / $request->price) * 100;
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
-            if ($request->file('image')) {
-                $image =  $this->UploadImage($request, 'images/products/');
+            if (!$request->file('image')) {
+                $image =  $this->UploadFile($request, 'images/products/');
                 $prod->image_path = $image;
             }
-            if ($request->file('images')) {
-                $images = $this->UploadImages($request, 'images/products/');
+            if (!$request->file('images')) {
+                $images = $this->UploadFiles($request, 'images/products/');
                  $prod->gallery = json_encode($images);
             }
-         
             $prod->save();
             DB::commit();
-          
-        // }catch(\Exception $e) {
-            // DB::rollBack();
-            // Session::flash('alert', 'error');
-            // Session::flash('message', $e);
-            // return redirect()->back()->withErrors($valid)->withInput($request->all());
-        // }
+           $this->AddProductResouce($request, $prod->id);
+        }catch(\Exception $e) {
+            DB::rollBack();
+            Session::flash('alert', 'error');
+            Session::flash('message', $e);
+            return redirect()->back()->withErrors($valid)->withInput($request->all());
+        }
 
         Session::flash('alert', 'success');
         Session::flash('message', 'Product Added Successfully');
@@ -182,25 +184,31 @@ class ProductController extends Controller
     {
         $id = decodeHashid($id);
         DB::beginTransaction();
-        try {
+         try {
             $prod = Product::where('id', $id)->first();
             $prod->name = $request->name;
             $prod->category_id = $request->category_id;
             $prod->description = $request->description;
+            $prod->title = $request->title;
             $prod->price = $request->price;
-            $prod->discount = (($request->price - $request->sale_price) / $request->price) * 100;
+            $prod->discount = (($request->price - $request->discount_price) / $request->price) * 100;
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
-            if ($request->file('image')) {
-                $image =  $this->UploadImage($request, 'images/products/');
+            if ($request->image) {
+                [$image, $pubId]=  $this->UploadFile($request, 'images/products/');
                 $prod->image_path = $image;
+                $prod->public_id = $pubId;
             }
-            if ($request->file('images')) {
-                $images = $this->UploadImages($request, 'images/products/');
+            if ($request->images) {
+                $images = $this->UploadFiles($request, 'images/products/');
                  $prod->gallery = json_encode($images);
             }
             if ($prod->save()) {
                 DB::commit();
+                if($request->docs){
+                  $this->AddProductResouce($request,  $prod->id);
+                 
+                }
                 Session::flash('alert', 'success');
                 Session::flash('message', 'Product Updated Successfully');
                 return redirect()->back();
@@ -241,8 +249,6 @@ class ProductController extends Controller
 
     public function productRating(Request $request)
     {
-
-
         if(!auth_user()){
             Session::flash('alert', 'danger');
             Session::flash('message', 'You  must login before rating a product');
@@ -254,9 +260,7 @@ class ProductController extends Controller
             'user_id' => auth_user()?->id,
             'product_id' => $request->product_id
         ];
-      
     $check = Review::where(['user_id' => auth_user()?->id, 'product_id' => $request->product_id])->first();
-    dd($check);
     if($check)
     {
         Session::flash('alert', 'danger');
@@ -274,4 +278,30 @@ class ProductController extends Controller
       Session::flash('message', 'An error occured');
       return back();
     }
+
+    public function AddProductResouce($resouces, $product_id)
+    {
+        if($resouces){
+            [$file, $ext, $public_id] = $this->UploadResoucesFiles($resouces, 'files/');
+            if($file)
+            {
+              $downloadUrl = cloudinary()->getUrl($public_id);
+            }
+           ProductResource::UpdateOrCreate([
+            'product_id' => $product_id,
+        ],[
+            'product_id' => $product_id,
+            'resource' => json_encode($file),
+            'resouce_type' => $downloadUrl,
+            'total_download'=> 0,
+            'status' => 1,
+            'public_id' => $public_id
+        ]); 
+        return true;
+    }
+    return false;
+    }
+
+
+
 }
