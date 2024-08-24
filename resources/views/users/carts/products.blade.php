@@ -16,11 +16,19 @@
                     <div class="ps-product--detail">
                         <div class="row">
                             <div class="col-12 col-xl-6">
-                                <div class="ps-product--gallery">
+                              <div class="ps-product--gallery">
                                     <div class="ps-product__thumbnail">
-                                        <div class="slide"><img src="{{$product->image_path }}" alt="{{$product->image_path }}" /></div>
-                                        <div class="slide"><img src="{{$product->image_path }}" alt="{{$product->image_path }}" /></div>
-                                      
+
+                                        @if($product->gallery)
+                                        @php 
+                                            $images = json_decode($product->gallery);
+                                        @endphp
+                                        @foreach ($images as $item) 
+                                        <div class="slide">
+                                        <div class=""><img src="{{$item }}" alt="{{$item }}" /></div>
+                                        </div>
+                                        @endforeach
+                                        @endif
                                     </div>
                                     <div class="ps-gallery--image">
                                      
@@ -36,7 +44,7 @@
                                             @endif
                                         
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             <div class="col-12 col-xl-6">
                                 <div class="ps-product__info">

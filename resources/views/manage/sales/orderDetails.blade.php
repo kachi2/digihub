@@ -30,7 +30,6 @@
                                                 <th>Product Name</th>
                                                   <th>Price</th>
                                                 <th>Quantity</th>
-                                                <th>Product Prescription</th>
                                              
                                                  <th>Created At</th>
                                                 
@@ -56,12 +55,6 @@
                                                 </td>
                                                   <td>
                                                     <a href="#">{{$sp->qty}}</a>
-                                                </td>
-                                                    
-                                                <td>
-                                                    @if($sp->product_prescription) 
-                                                    <a href="{{$sp->product_prescription}}"> 
-                                                        Download  </a> @endif
                                                 </td>
                                                     
                                                   <td>

@@ -84,7 +84,7 @@
                                                              <input type="hidden" name="status" value="1">
                                                               <button type="submit"  class="dropdown-item" style="color:red">Delete Product</button>
                                                         </form> --}}
-                                                        @if($sp->status != 1) 
+                                                        @if($sp->status != 2) 
                                                             <form method="post" action="{{route('product.status', $sp->hashid)}}" id="form1"> 
                                                             @csrf    
                                                              <input type="hidden" name="status" value="1">

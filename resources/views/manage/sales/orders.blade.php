@@ -28,10 +28,10 @@
                                                 <th>User Email</th>
                                                 <th>Order No</th>
                                                 <th>Payment Ref</th>
-                                                  <th>Payment Method</th>
+                                                  <th>Payment Channel</th>
                                                 <th>Amount</th>
                                                 <th>Payment Status</th>
-                                                <th>Completion Status</th>
+                                                <th>Download Status</th>
                                                  <th>Created At</th>
                                                  <th> &nbsp; &nbsp; &nbsp;&nbsp; </th>
                                             </thead>
@@ -41,7 +41,7 @@
                                             <tr>
                                             <td>{{$sp->id}}</td>
                                                 <td>
-                                                    <a href="#">{{substr($sp->user->email,0,15)}}..</a>
+                                                    <a href="#">{{$sp->user->email}}</a>
                                                 </td> 
                                                 <td>
                                                     <a href="#">{{$sp->order_no}}</a>
@@ -50,7 +50,7 @@
                                                     <a href="#">{{$sp->payment_ref??"-"}}</a>
                                                 </td>
                                                 <td>
-                                                    <a href="#">Card</a>
+                                                    <a href="#">{{$sp->payment_method}}</a>
                                                 </td>
                                                  <td>
                                                     <a href="#">{{moneyFormat($sp->payable,2)}}</a>
@@ -76,8 +76,6 @@
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a href="{{route('admin.order-details', encrypt($sp->order_no))}}" class="dropdown-item">View Order Details</a>
-                                                            <a href="{{route('admin.shipping', encrypt($sp->order_no))}}" class="dropdown-item">View Shipping</a>
-                                                          <a href="{{route('order.status', encrypt($sp->order_no))}}" class="dropdown-item">Update Status</a>
                                                         </div>
                                                     </div>
                                                 </td>

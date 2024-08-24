@@ -54,6 +54,7 @@ class PaymentService extends Funcs
             Order::where('order_no', $orderNo)->update([
                 'payment_ref' => $paymentDetails['data']['reference'],
                 'is_paid' => 1,
+                'payment_method' => 'Paystack'
             ]);
             $ref = GenerateRef(10);
             Parent::createPaymentReport($orderNo, $amount, $ref, $paymentDetails['data']['reference']);
@@ -111,6 +112,7 @@ class PaymentService extends Funcs
             $updateOrder->update([
                 'external_ref' => $session->payment_intent,
                 'is_paid' => 1,
+                'payment_method' => 'Stripe'
             ]);
             $ref = GenerateRef(10);
             Parent::createPaymentReport($orderNo, $amount, $ref, $session->payment_intent);

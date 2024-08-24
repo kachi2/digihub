@@ -11,25 +11,22 @@
         </ul>
         <div class="ps-categogy__content">
             <div class="row row-reverse">
-                <div class="col-12 col-md-9" style="
-                background: #fff;
-                padding: 10px;
-                border-radius: 10px; top:-40px">
+                <div class="col-12 col-md-9" style="background: #fff; padding: 10px; border-radius: 10px; top:-40px">
                     <div class="ps-categogy__wrapper">
                       
                         <div class="ps-categogy__onsale">
                             <form>
                                 <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="onSaleProduct" checked >
+                                    <input class="custom-control-input" type="checkbox" id="onSaleProduct" checked  disabled>
                                     <label class="custom-control-label" for="onSaleProduct">@if(isset($searchterm)) {{$searchterm}} @else Showing All Results @endif</label>
                                 </div>
                             </form>
                         </div>
                         <div class="ps-categogy__sort">
-                            <form><span>Sort by</span>
+                            {{-- <form><span>Sort by</span> --}}
                                 <select class="form-select">
-                                    <option selected="">Latest</option>
-                                    <option value="Popularity">Popularity</option>
+                                    {{-- <option selected="">Latest</option>
+                                    <option value="Popularity">Popularity</option> --}}
                                 </select>
                             </form>
                         </div>
@@ -54,7 +51,7 @@
                                         </div>
                                         <div class="ps-product__content">
                                             <h5 class=""><a href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}">{{ $prod->name}}</a>
-                                            <span style="float: right;"> 
+                                            <span style="float: right;"> &nbsp;  &nbsp;
                                                 <i class="fa fa-star"> </i> 
                                                  @php 
                                                     $prod_rating = productRating($prod->id);
@@ -68,7 +65,7 @@
                                           
                                             </div>
                                             <span class="download-note"> 
-                                                <i class="fa fa-cloud-download"> </i> Digital Download</span> 
+                                                <i class="fa fa-cloud-download"> </i> Digital</span> 
                                                 <span class="add-to-cart">  <a style="font-size:14px; font-weight:300" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}"> <i class="fa fa-plus"> </i> Add to basket</a>  
                                         </div>
                                     </div>

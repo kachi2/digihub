@@ -1,13 +1,12 @@
-<footer class="ps-footer ps-footer--8" style="background: #103178d2 !important">
-
+<footer class="ps-footer ps-footer--8" style="background: #031233e4 !important">
     <div class="container">
-        <div class="ps-footer__middle" >
+        <div class="ps-footer__middle">
             <div class="row">
                 <div class="col-12 col-md-5">
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <div class="ps-footer--address">
-                                <div class="ps-logo"><a href="{{route('index')}}"> <img src="{{asset('images/'.$settings->site_logo)}}" style="border-radius: 5px" alt>
+                                <div class="ps-logo" style="background:#ffffffea; border-radius:5px"><a href="{{route('index')}}"> <img src="{{asset('images/'.$settings->site_logo)}}" style="border-radius: 5px" alt>
                                     <img class="logo-white" src="{{asset('images/'.$settings->site_logo)}}"  style="border-radius: 5px" alt="{{asset('images/'.$settings->site_logo)}}">
                                     <img class="logo-black" src="{{asset('images/'.$settings->site_logo)}}" style="border-radius: 5px"  alt="{{asset('images/'.$settings->site_logo)}}">
                                     <img class="logo-white-all" src="{{asset('images/'.$settings->site_logo)}}"  style="border-radius: 5px" alt="{{asset('images/'.$settings->site_logo)}}">
@@ -23,19 +22,6 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-8">
-                            <div class="ps-footer--contact">
-                                <h5 class="ps-footer__title">Need help</h5>
-                                <div class="ps-footer__fax"><i class="icon-telephone"></i>{{$settings->site_phone}}</div>
-                                <p class="ps-footer__work">{{$settings->site_email}}</p>
-                              
-                      
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-7">
-                    <div class="row">
-                        <div class="col-6 col-md-4">
                             <div class="ps-footer--block">
                                 <h5 class="ps-block__title">Categories</h5>
                                 <ul class="ps-block__list">
@@ -43,7 +29,21 @@
                                     <li><a href="{{route('products.search',$menus->hashid)}}">{{ucfirst(strtolower($menus->name))}}</a></li>
                                     @empty
                                     @endforelse
-                                   
+                                </ul>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <div class="ps-footer--block">
+                                <h5 class="ps-block__title"></h5>
+                                <ul class="ps-block__list">
+                                    @forelse ($site_categories->take(5) as $menus)
+                                    <li><a href="{{route('products.search',$menus->hashid)}}">{{ucfirst(strtolower($menus->name))}}</a></li>
+                                    @empty
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
@@ -53,6 +53,8 @@
                                 <ul class="ps-block__list">
                                     <li><a href="{{route('users.account.index')}}">My account</a></li>
                                     <li><a href="{{route('users.orders')}}">My orders</a></li>
+                                    <li><a href="{{route('users.orders')}}">Recently Viewed</a></li>
+                                    <li><a href="{{route('users.orders')}}">Login </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -74,17 +76,17 @@
         </div>
         <div class="ps-footer--bottom">
             <div class="row">
-                <div class="col-12 col-md-4" style="background: #fff">
+                <div class="col-12 col-md-4" >
                 </div>
-                <div class="col-12 col-md-4" style="background: #fff">
-                    <p style="color:#000">{{$settings->site_copyright}}</p>
+                <div class="col-12 col-md-4" >
+                    <p style="color:#ffffff">{{$settings->site_copyright}}</p>
                 </div>
-                <div class="col-12 col-md-4 text-right" style="background: #fff">
+                <div class="col-12 col-md-4 text-right" >
                     <img src="{{asset('/images/paystack_logo.png')}}"  width="70px" alt>
                     <img class="payment-light" src="{{asset('/images/paystack.png')}}"      width="50px"alt>
                     <img class="payment-light" src="{{asset('/images/secure_ssl.png')}}"  width="50px" alt>
-                    <img class="payment-light" src="{{asset('/images/mastercard.png')}}"  width="50px"alt>
-                    <img class="payment-light" src="{{asset('/images/visa.png')}}"  width="50px" alt>
+                    <img class="payment-light" src="{{asset('/images/mastercard.png')}}" style="background:#ffffff"  width="50px"alt>
+                    <img class="payment-light" src="{{asset('/images/visa.png')}}" style="background:#ffffff" width="50px" alt>
                 </div>
             </div>
         </div>

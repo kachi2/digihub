@@ -39,24 +39,32 @@ trait imageUpload{
           ]);
           $images[] = $image_url->getSecurePath();
           $public_id = $image_url->getPublicId();
+    
+          // dd([$public_id][0]);
           if($image_url)
           {
             $option = [
               'public_ids' => [$public_id],
-              'type' => 'upload', 
-              'target_format' => 'zip', 
-              'use_original_filename' => true, 
-              'flatten_folders' => true,
-              'expires_at' => time() + 3600, 
+              'expires_at' => time() + 30000600, 
+              'resource_type' => 'image'
           ];
-           $dd = cloudinary()->createArchive($option);
+            $dd = cloudinary()->createZip($option);
+            $res = $dd;
+            dd($res);
+     
            {
             $options = [
-              'use_original_filename' => true,
-              'expires_at' => Carbon::now()->addDays(2),
-              'public_ids' => [$public_id],
+              'signature' => '892fae86ba79b751581dd415d540f6632cae193f',
+              'public_ids' => 'xdq7efdjygyt4kyzpmac.zip',
+              'asset_id' => 'd59e4429383ef48f40b1df20ea5f8990',
+              'mode' => 'download', 
+              'target_format' => 'zip',
+              'timestamp' => '1724361628',
+              'signature' =>  $sign,
+              'use_original_filename' => 1,
+              'api_key' =>  $dd,
             ];
-          $ss =  cloudinary()->downloadZipUrl($options);
+          $ss =  cloudinary()->downloadArchiveUrl($options);
           dd($ss);
            }
 

@@ -40,7 +40,7 @@
                                             <tr>
                                             
                                                 <td>
-                                                    <a href="#">{{substr($sp->user->email,0,15)}}..</a>
+                                                    <a href="#">{{$sp->user->email}}</a>
                                                 </td> 
                                                 <td>
                                                     <a href="#">{{$sp->order_No}}</a>
@@ -55,7 +55,7 @@
                                                     <a href="#">{{$sp->payment_method}}</a>
                                                 </td>
                                                  <td>
-                                                    <a href="#">{{moneyFormat($sp->amount,2)}}</a>
+                                                    <a href="#">{{moneyFormat($sp->payable,2)}}</a>
                                                 </td>
                                                 <td>
                                                     <a href="#">{{$sp->type}}</a>

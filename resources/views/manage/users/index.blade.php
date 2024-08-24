@@ -97,11 +97,9 @@
                                                 <th>User Email</th>
                                                 <th>Order No</th>
                                                 <th>Payment Ref</th>
-                                                  <th>Payment Method</th>
                                                 <th>Amount</th>
                                                 <th>Payment Status</th>
-                                                <th>Completion Status</th>
-                                                <th>Dispatch Status</th>
+                                                <th>Download Status</th>
                                                  <th>Created At</th>
                                                  <th> &nbsp; &nbsp; &nbsp;&nbsp; </th>
                                             </thead>
@@ -110,16 +108,13 @@
                                         
                                             <tr>
                                                 <td>
-                                                    <a href="#">{{substr($sp->user->email,0,15)}}..</a>
+                                                    <a href="#">{{$sp->user->email}}</a>
                                                 </td> 
                                                 <td>
                                                     <a href="#">{{$sp->order_no}}</a>
                                                 </td>
                                                 <td>
                                                     <a href="#">{{$sp->payment_ref??"-"}}</a>
-                                                </td>
-                                                <td>
-                                                    <a href="#">{{_('card')}}</a>
                                                 </td>
                                                  <td>
                                                     <a href="#">{{number_format($sp->payable,2)}}</a>
@@ -133,11 +128,6 @@
                                                     @elseif($sp->is_delivered == 3) <span  class="badge badge-danger">Cancelled</span>
                                                     @else <span class="badge badge-light">Pending</span> @endif</a>
                                                 </td>
-                                                <td>
-                                                <a href="#">@if($sp->dispatch_status == 1) <span  class="badge badge-primary">Dispatched</span> 
-                                                    @elseif($sp->dispatch_status == 2) <span class="badge badge-success">Delivered</span>
-                                                    @else <span  class="badge badge-light">Pending</span>@endif</a>
-                                                </td>      
                                                   <td>
                                                     <a href="#">{{$sp->created_at->format('d/M/y')}}</a>
                                                 </td>
@@ -150,8 +140,6 @@
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a href="{{route('admin.order-details', encrypt($sp->order_no))}}" class="dropdown-item">View Order Details</a>
-                                                            <a href="{{route('admin.shipping', encrypt($sp->order_no))}}" class="dropdown-item">View Shipping</a>
-                                                          <a href="{{route('order.status', encrypt($sp->order_no))}}" class="dropdown-item">Update Status</a>
                                                         </div>
                                                     </div>
                                                 </td>

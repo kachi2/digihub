@@ -31,10 +31,10 @@
                                 {{-- <li> <span class="ps-list__title">SKU: </span><a class="ps-list__text" href="#">{{$cart->model->sku}}</a>
                                 </li> --}}
                             </ul>
-                            <button  type="submit" name="qty" value="{{$cart->qty -1 }}" class="ps-btn--primary  decrement-btn" style="width: 30px; border-radius:3px; height:30px"> - </button> 
+                            {{-- <button  type="submit" name="qty" value="{{$cart->qty -1 }}" class="ps-btn--primary  decrement-btn" style="width: 30px; border-radius:3px; height:30px"> - </button> 
                             <input type="text" value="{{$cart->qty}}"  class="qty" style="border: 1px solid #8c8a8a53; height:30px; width:30px; text-align:center"> 
                             <input type="hidden" min="0" name="cartId" value="{{$cart->rowId}}">
-                            <button  type="submit" name="qty" value="{{$cart->qty + 1}}" class="ps-btn--primary  increment-btn" style="width: 30px; border-radius:3px; height:30px"> + </button>  </h6>
+                            <button  type="submit" name="qty" value="{{$cart->qty + 1}}" class="ps-btn--primary  increment-btn" style="width: 30px; border-radius:3px; height:30px"> + </button>  </h6> --}}
 
                            <span style="floar:right"> <a href="{{route('carts.delete', $cart->rowId)}}"   class="btn btn-danger"> Remove</a></span>
                         </div>

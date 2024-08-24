@@ -37,22 +37,24 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
      
-        View::share('announcment', Annoucement::latest()->first());
-        View::share('settings', Setting::latest()->first());
-        View::share('site_menu', Menu::get());
-        View::share('advert_top', Advert::where('placement', 'top')->first());
-        View::share('unread_notify', AdminNotification::latest()->get());
-        $categories = Category::inRandomOrder()->get();
-        foreach($categories as $cat){
-            addHashId($cat->products);
-            $cat->hashid = Hashids::connection('products')->encode($cat->id);
-        }
-        View::share('site_categories', $categories);
-        $category = Category::get();
-        foreach($category as $cate){
-            addHashId($cate->products);
-            $cate->hashid = Hashids::connection('products')->encode($cate->id);
-        }
-        View::share('site_category', $category);
-        }
+        // View::share('announcment', Annoucement::latest()->first());
+        // View::share('settings', Setting::latest()->first());
+        // View::share('site_menu', Menu::get());
+        // View::share('advert_top', Advert::where('placement', 'top')->first());
+        // View::share('unread_notify', AdminNotification::latest()->get());
+        // $categories = Category::inRandomOrder()->get();
+        // foreach($categories as $cat){
+        //     addHashId($cat->products);
+        //     $cat->hashid = Hashids::connection('products')->encode($cat->id);
+        // }
+        // View::share('site_categories', $categories);
+        // $category = Category::get();
+        // foreach($category as $cate){
+        //     addHashId($cate->products);
+        //     $cate->hashid = Hashids::connection('products')->encode($cate->id);
+        // }
+        // View::share('site_category', $category);
+    
+
+    }
 }

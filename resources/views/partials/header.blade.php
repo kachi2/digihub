@@ -27,11 +27,11 @@
                     <li><a class="ps-header__item" href="{{route('carts.index')}}" id="cart-mini"><i class="icon-cart-empty"></i> <span class="badge cartReload" >{{Cart::count()}}</span></a></li>
                 </ul>
                 <div class="ps-header__search">
-                    <form action="" method="post">
+                    <form action="{{route('products.search')}}" method="get">
                         <div class="ps-search-table">
                             <div class="input-group">
-                                <input class="form-control ps-input" type="text" placeholder="Search for business card, resume template, business spreadsheet template, and more...">
-                                <div class="input-group-append"><a href="#"><i class="fa fa-search"></i></a></div>
+                                <input class="form-control ps-input" type="text"  name="q" placeholder="Search for business card, resume template, business spreadsheet template, and more...">
+                                <div class="input-group-append"><button type="submit" style="border:none; background:none"><i class="fa fa-search"></i></button></div>
                             </div>
                         </div>
                     </form>

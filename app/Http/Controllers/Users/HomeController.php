@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         $slider = Slider::latest()->get();
-        $data['popular'] = Product::take(4)->orderBy('views', 'DESC')->get();
+        $data['popular'] = Product::take(8)->get();
         $data['topProducts1'] = Product::orderBy('views', 'DESC')->take(6)->get();
         $data['productCat1'] = Product::where('category_id', 24)->inRandomOrder()->take(9)->get();
         $data['productCat2'] = Product::where('category_id', 3)->inRandomOrder()->take(9)->get();
