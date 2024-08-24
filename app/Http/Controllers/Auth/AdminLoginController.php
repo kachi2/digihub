@@ -30,6 +30,7 @@ class AdminLoginController extends Controller
     {
        
         $credentials = $request->only('email', 'password');
+        dd($credentials);
         if(Auth('admin')->attempt($credentials)){
             $request->session()->regenerate();
             $user = Admin::whereId(auth('admin')->user()->id)->first();
