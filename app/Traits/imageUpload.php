@@ -12,10 +12,10 @@ trait imageUpload{
         $image_url = cloudinary()->$method($request->file('image')->getRealPath(), [
             'folder' => $path,
         ]);
-      $pubId =  $image_url->getPublicId();
+      // $pubId =  $image_url->getPublicId();
       $image_url = $image_url->getSecurePath();
  
-        return  [$image_url, $pubId];
+        return  $image_url;
     }
 
     function UploadFiles($request, $path, $width = null, $height=null)

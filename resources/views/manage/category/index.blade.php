@@ -42,8 +42,6 @@
                                                 <td>
                                                     <a href="#">{{$sp->name}}</a>
                                                 </td> 
-                                              
-                                            
                                                 <td>
                                                     <a href="#"><img src="{{$sp->image_path}}" width="50px" height="50px"></a> 
                                                 </td>    
