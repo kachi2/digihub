@@ -48,7 +48,7 @@ class SliderController extends Controller
        //dd($data);
         Slider::create($data);
         Session::flash('alert', 'success');
-        Session::flash('msg', 'Slider Added Successfully');
+        Session::flash('message', 'Slider Added Successfully');
         return back();
     }
 
