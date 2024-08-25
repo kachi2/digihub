@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12 col-md-5">
                     <div class="row">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <div class="ps-footer--address">
                                 <div class="ps-logo" style="background:#ffffffea; border-radius:5px"><a href="{{route('index')}}"> <img src="{{asset('images/'.$settings->site_logo)}}" style="border-radius: 5px" alt>
                                     <img class="logo-white" src="{{asset('images/'.$settings->site_logo)}}"  style="border-radius: 5px" alt="{{asset('images/'.$settings->site_logo)}}">
@@ -21,7 +21,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-6">
                             <div class="ps-footer--block">
                                 <h5 class="ps-block__title">Categories</h5>
                                 <ul class="ps-block__list">
