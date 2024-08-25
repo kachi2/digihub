@@ -20,7 +20,7 @@
                                         </div>
                                         <div class="mega-menu__column col-sm-5 col-md-4">
                                             <div class="ps-promo">
-                                                <div class="ps-promo__item"><img class="ps-promo__banner" src="{{asset('images/category/'.$menu->image_path)}}" alt="alt" />
+                                                <div class="ps-promo__item"><img class="ps-promo__banner" src="{{$menu->image_path}}" alt="alt" />
                                                 </div>
                                             </div>
                                         </div>
