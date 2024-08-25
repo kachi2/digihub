@@ -6,11 +6,14 @@
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="ps-footer--address">
-                                <div class="ps-logo"><a href="{{route('index')}}"> 
-                                     <img src="{{asset('images/'.$settings->site_logo)}}"   style="background:#ffffffea; border-radius:5px"alt>
-
-                                </a>
-                                </div>
+                                <div class="ps-logo">
+                                    <a href="{{route('index')}}">  
+                                    <img src="{{asset('images/'.$settings->site_logo)}}"   style="background:#ffffffea; border-radius:5px" alt>
+                                    <img class="logo-white" src="{{asset('images/'.$settings->site_logo)}}" style="background:#ffffffea; border-radius:5px"  alt="{{asset('images/'.$settings->site_logo)}}">
+                                    <img class="logo-black" src="{{asset('images/'.$settings->site_logo)}}" style="background:#ffffffea; border-radius:5px"   alt="{{asset('images/'.$settings->site_logo)}}">
+                                    <img class="logo-white-all" src="{{asset('images/'.$settings->site_logo)}}"  style="background:#ffffffea; border-radius:5px"  alt="{{asset('images/'.$settings->site_logo)}}">
+                                    <img class="logo-green" src="{{asset('images/'.$settings->site_logo)}}" style="background:#ffffffea; border-radius:5px"   alt="{{asset('images/'.$settings->site_logo)}}" >
+                                </a></div>
                                 <div class="ps-footer__title">Our store</div>
                                 <p>{{$settings->address}}</p>
                                 <ul class="ps-social">
