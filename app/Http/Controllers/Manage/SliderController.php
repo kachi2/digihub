@@ -36,7 +36,7 @@ class SliderController extends Controller
        //dd(request()->file('images'));
 
         if($request->file('image')){
-            $fileName = $this->UploadImage($request, 'images/sliders');
+            $fileName = $this->UploadFile($request, 'images/sliders');
     }
         $data = [
             'image_path' =>   $fileName??null,
@@ -66,7 +66,7 @@ class SliderController extends Controller
         $sl = Slider::where('id', decrypt($id))->first();
         
         if($request->file('image')){
-            $fileName = $this->UploadImage($request, 'images/sliders');
+            $fileName = $this->UploadFile($request, 'images/sliders');
     }else{
         $fileName = $sl->image_path;
     }
