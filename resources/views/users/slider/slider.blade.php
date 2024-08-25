@@ -14,8 +14,7 @@
                             <div class="ps-banner__desc text-white">{{ $slider->content }}</div>
                             <div class="ps-banner__btn-group">
                             </div>
-                            <div class="ps-banner__persen bg-warning ps-left">
-                    </div>
+                           
                         </div>
                          <div class="ps-banner__thumnail ps-banner__fluid">
                              <a style="position:inherit" href="{{route('products.search')}}">
