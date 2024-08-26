@@ -6,7 +6,7 @@
         data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1"
         data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
         @forelse ($sliders as $slider)
-            <div class="ps-banner" style="background:#306A53;">
+            <div class="ps-banner">
                 <div class="container-no-round">
                     <div class="ps-banner__block">
                         <div class="ps-banner__content">

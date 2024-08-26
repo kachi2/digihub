@@ -106,6 +106,19 @@
                                         </div>
                                     </div>              
                                 </li> 
+                                <div class="text-muted d-flex justify-content-between">
+                                    <div class="text-truncate small"></div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text"  name="color"   placeholder="Enter Slider text color" value="{{$slider->color}}" class="form-control @error('color') is-invalid @enderror"  > 
+                                            <small id="emailHelp" class="form-text text-muted">Slider Text Color e.g black, white etc. default is black
+                                            </small>
+                                            @error('color"')
+                                            <span class="invalid-feedback"> <small> * </small> </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                               
                                 <div style="float:right" class="pr-5 pt-3">
                                     <button type="submit" class="btn btn-primary w-20">Update Slider</button>
