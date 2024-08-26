@@ -10,8 +10,8 @@
                 <div class="container-no-round">
                     <div class="ps-banner__block">
                         <div class="ps-banner__content">
-                            <h2 class="ps-banner__title text-white">{{ $slider->title }}</h2>
-                            <div class="ps-banner__desc text-white">{{ $slider->content }}</div>
+                            <h2 class="ps-banner__title text-{{ $slider->color }}">{{ $slider->title }}</h2>
+                            <div class="ps-banner__desc text-{{ $slider->color }}">{{ $slider->content }}</div>
                             <div class="ps-banner__btn-group">
                             </div>
                            
