@@ -104,7 +104,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>              
+                                    </div>               
                                 </li> 
                                 <div class="text-muted d-flex justify-content-between">
                                     <div class="text-truncate small"></div>
