@@ -121,13 +121,13 @@ class ProductController extends Controller
             $prod->discount = (($request->price - $request->discount_price) / $request->price) * 100;
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
-            if (!$request->file('image')) {
-                $image =  $this->UploadFile($request, 'images/products/');
-                $prod->image_path = $image;
+            if ($request->file('image')) {
+                // $image =  $this->UploadFile($request, 'images/products/');
+                // $prod->image_path = $image;
             }
-            if (!$request->file('images')) {
-                $images = $this->UploadFiles($request, 'images/products/');
-                 $prod->gallery = json_encode($images);
+            if ($request->file('images')) {
+                // $images = $this->UploadFiles($request, 'images/products/');
+                //  $prod->gallery = json_encode($images);
             }
             $prod->save();
             DB::commit();
@@ -195,9 +195,7 @@ class ProductController extends Controller
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
             if ($request->image) {
-                [$image, $pubId]=  $this->UploadFile($request, 'images/products/');
-                $prod->image_path = $image;
-                $prod->public_id = $pubId;
+                $prod->image_path=  $this->UploadFile($request, 'images/products/');
             }
             if ($request->images) {
                 $images = $this->UploadFiles($request, 'images/products/');
@@ -284,22 +282,20 @@ class ProductController extends Controller
         if($resouces){
             [$file, $ext, $public_id] = $this->UploadResoucesFiles($resouces, 'files/');
             if($file)
-            {
-              $downloadUrl = cloudinary()->getUrl($public_id);
-            }
+            // {
+            //   $downloadUrl = cloudinary()->getUrl($public_id);
+            // }
            ProductResource::UpdateOrCreate([
             'product_id' => $product_id,
         ],[
             'product_id' => $product_id,
             'resource' => json_encode($file),
-            'resouce_type' => $downloadUrl,
+            'resouce_type' => $ext,
             'total_download'=> 0,
             'status' => 1,
             'public_id' => $public_id
         ]); 
-        return true;
     }
-    return false;
     }
 
 

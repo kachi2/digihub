@@ -50,17 +50,10 @@
 
                                 <div class="ps-product__footer" >
                                     <div class="d-none  d-xl-block ">
-                                        @php 
-                                        if($order->productResource){
-                                        $files = json_decode($order->productResource->resource, true);
-                                        }
-                                        @endphp
+                                        @if($orders->resources)
                                              <span style=" float:right; color:rgb(10, 10, 128)">
-                                        @if(isset($files) && (count($files) > 0))
-                                        @foreach ($files as $downld)
-                                        <a href="{{$downld}}" target="_blank" download class="btn btn-info btn-lg" style="" >
-                                        Your Item is Ready Download Now</a>
-                                        @endforeach
+                                        <a href="{{$orders->resources}}" target="_blank" download class="btn btn-info btn-lg" style="" >
+                                         Download Resources</a>
                                         @endif
                                     </span> </div>
                                     

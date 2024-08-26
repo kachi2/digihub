@@ -19,26 +19,30 @@
                               <div class="ps-product--gallery">
                                     <div class="ps-product__thumbnail">
 
-                                        @if($product->gallery)
+                                        @if(isset($product->gallery))
                                         @php 
                                             $images = json_decode($product->gallery);
                                         @endphp
                                         @foreach ($images as $item) 
                                         <div class="slide">
-                                        <div class=""><img src="{{$item }}" alt="{{$item }}" /></div>
+                                        <div class="">
+                                            @php echo displayImageOrVideo($item); @endphp
+                                        </div>
                                         </div>
                                         @endforeach
                                         @endif
                                     </div>
                                     <div class="ps-gallery--image">
                                      
-                                            @if($product->gallery)
+                                            @if(isset($product->gallery))
                                             @php 
                                                 $images = json_decode($product->gallery);
                                             @endphp
                                             @foreach ($images as $item) 
                                             <div class="slide">
-                                            <div class="ps-gallery__item"><img src="{{$item }}" alt="{{$item }}" /></div>
+                                            <div class="ps-gallery__item">
+                                                @php echo displayImageOrVideo($item); @endphp
+                                            </div>
                                             </div>
                                             @endforeach
                                             @endif
@@ -185,8 +189,9 @@
                             <div class="ps-product__thumbnail ">
                                 <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:300px">
                                     <figure>
+                                        @if(isset($prod->image_path))
                                         @php echo displayImageOrVideo($prod->image_path); @endphp
-                                    
+                                        @endif
                                     </figure>
                                 </a>
                                 <div class="ps-product__badge">

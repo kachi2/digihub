@@ -11,9 +11,9 @@ trait imageUpload{
           $method = $this->getMime($request->image);
         $image_url = cloudinary()->$method($request->file('image')->getRealPath(), [
             'folder' => $path,
-        ]);
+        ])->getSecurePath();
       // $pubId =  $image_url->getPublicId();
-      $image_url = $image_url->getSecurePath();
+      // $image_url = $image_url);
  
         return  $image_url;
     }
@@ -45,33 +45,26 @@ trait imageUpload{
           {
             $option = [
               'public_ids' => [$public_id],
-              'expires_at' => time() + 30000600, 
-              'resource_type' => 'image'
+              'expires_at' => strtotime(Carbon::now()->addDay(31)), 
+              // 'resource_type' => 'image'
           ];
-            $dd = cloudinary()->createZip($option);
-            $res = $dd;
-            dd($res);
-     
-           {
-            $options = [
-              'signature' => '892fae86ba79b751581dd415d540f6632cae193f',
-              'public_ids' => 'xdq7efdjygyt4kyzpmac.zip',
-              'asset_id' => 'd59e4429383ef48f40b1df20ea5f8990',
-              'mode' => 'download', 
-              'target_format' => 'zip',
-              'timestamp' => '1724361628',
-              'signature' =>  $sign,
-              'use_original_filename' => 1,
-              'api_key' =>  $dd,
-            ];
-          $ss =  cloudinary()->downloadArchiveUrl($options);
-          dd($ss);
-           }
+          $image =  cloudinary()->createZip($option);
+          return [$image['secure_url'], $ext, $public_id];
+            
+          //   $options = [
+          //     'public_ids' => $public_id,
+          //     'mode' => 'download', 
+          //     'target_format' => 'zip',
+          //     'use_original_filename' => 1,
+          //   ];
+          //   $ss =  cloudinary()->downloadArchiveUrl($options);
+          //   dd($ss);
+          // //  }
 
            
           }
       }
-     return [$images, $ext, $public_id];
+  
   }
 
     function ImagesNoResize($request, $path){

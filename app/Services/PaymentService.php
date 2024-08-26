@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Mail\paymentMail;
+use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Services\Funcs;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -107,13 +109,24 @@ class PaymentService extends Funcs
         $payment = $stripe->paymentMethods->retrieve($intent['data']['0']['payment_method'], []);
         $orderNo = Session::get('order_No');
         $amount = Session::get('amount');
+        $cartItems = CartItem::where('order_no', $orderNo)->first();
+     
+        $option = [
+            'public_ids' => $cartItems->productResource->public_id,
+            'expires_at' => strtotime(Carbon::now()->addSeconds(100)), 
+        ];
+        $image =  cloudinary()->createZip($option);
+        // dd($image);
         if ($session->status == 'complete') {
             $updateOrder = Order::where('Order_No', $orderNo)->first();
             $updateOrder->update([
-                'external_ref' => $session->payment_intent,
+                'payment_ref' => $session->payment_intent,
                 'is_paid' => 1,
-                'payment_method' => 'Stripe'
+                'payment_method' => 'Stripe',
+                'resources' => $image['secure_url'],
+                'is_delivered' => 1,
             ]);
+
             $ref = GenerateRef(10);
             Parent::createPaymentReport($orderNo, $amount, $ref, $session->payment_intent);
            Parent::SendOrderMail($orderNo, $amount,$ref,$session->payment_intent);
