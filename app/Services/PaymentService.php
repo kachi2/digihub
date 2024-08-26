@@ -116,7 +116,6 @@ class PaymentService extends Funcs
             'expires_at' => strtotime(Carbon::now()->addSeconds(100)), 
         ];
         $image =  cloudinary()->createZip($option);
-        // dd($image);
         if ($session->status == 'complete') {
             $updateOrder = Order::where('Order_No', $orderNo)->first();
             $updateOrder->update([
@@ -126,7 +125,6 @@ class PaymentService extends Funcs
                 'resources' => $image['secure_url'],
                 'is_delivered' => 1,
             ]);
-
             $ref = GenerateRef(10);
             Parent::createPaymentReport($orderNo, $amount, $ref, $session->payment_intent);
            Parent::SendOrderMail($orderNo, $amount,$ref,$session->payment_intent);
