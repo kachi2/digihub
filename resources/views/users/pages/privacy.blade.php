@@ -5,7 +5,7 @@
     <div class="container">
         <ul class="ps-breadcrumb">
             <li class="ps-breadcrumb__item"><a href="">Home</a></li>
-            <li class="ps-breadcrumb__item active" aria-current="page">Privacy Police</li>
+            <li class="ps-breadcrumb__item active" aria-current="page">Privacy Polic</li>
         </ul>
     </div>
     <div class="ps-about__content">
