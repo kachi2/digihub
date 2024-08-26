@@ -43,6 +43,7 @@ class SliderController extends Controller
             'title' => $request->title,
             'content' =>  $request->content,
             'link' => 1,
+            'color' => $request->color
         ];
 
        //dd($data);
@@ -75,6 +76,7 @@ class SliderController extends Controller
         'title' => $request->title,
         'content' =>  $request->content,
         'link' => 1,
+        'color' => $request->color
     ];
          $sl->fill($data)->save();
         Session::flash('alert', 'success');
