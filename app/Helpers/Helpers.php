@@ -78,7 +78,7 @@ function displayImageOrVideo($file, $width=null, $height=null)
     switch($files[3])
     {
         case 'mp4': 
-            $file = asset('images/'.$file);
+            // $file = asset('images/'.$file);
         $output = 
         " <video muted  width='$width' height='$height' autoplay loop>
                 <source src='$file' type='video/mp4'>  
