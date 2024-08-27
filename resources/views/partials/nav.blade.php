@@ -7,7 +7,7 @@
                         </li>
                         @forelse($site_category->take(6) as $menu)
                         <li class="has-mega-menu"><a href="{{route('products.search')}}" style="">{{$menu->name}}<span class="sub-toggle"></span></a>
-                          <div class="mega-menu">
+                          {{-- <div class="mega-menu">
                                 <div class="container">
                                     <div class="mega-menu__row">
                                         <div class="mega-menu__column col-12 col-md-4 col-sm-5" style="max-height: 200px">
@@ -29,7 +29,7 @@
                                        
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </li>  
                         @empty
                         @endforelse

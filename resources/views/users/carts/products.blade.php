@@ -26,7 +26,7 @@
                                         @foreach ($images as $item) 
                                         <div class="slide">
                                         <div class="">
-                                            @php echo displayImageOrVideo($item); @endphp
+                                            @php echo displayImageOrVideo($item, null,450); @endphp
                                         </div>
                                         </div>
                                         @endforeach
@@ -41,7 +41,7 @@
                                             @foreach ($images as $item) 
                                             <div class="slide">
                                             <div class="ps-gallery__item">
-                                                @php echo displayImageOrVideo($item); @endphp
+                                                @php echo displayImageOrVideo($item,null,80); @endphp
                                             </div>
                                             </div>
                                             @endforeach
@@ -190,7 +190,7 @@
                                 <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:300px">
                                     <figure>
                                         @if(isset($prod->image_path))
-                                        @php echo displayImageOrVideo($prod->image_path); @endphp
+                                        @php echo displayImageOrVideo($prod->image_path, null,300); @endphp
                                         @endif
                                     </figure>
                                 </a>

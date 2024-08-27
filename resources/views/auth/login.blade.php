@@ -32,8 +32,8 @@
 
     <!-- logo -->
     <div id="logo">
-        <img class="logo" src="{{asset('/images/'.$settings->site_logo)}}" alt="{{asset('/images/'.$settings->site_logo)}}" width="200px">
-        <img class="logo-dark" src="{{asset('/images/'.$settings->site_logo)}}" alt="{{asset('/images/'.$settings->site_logo)}}" width="200px">
+        <img class="logo" src="{{asset('assets/'.$settings->site_logo)}}" alt="{{asset('assets/'.$settings->site_logo)}}" width="200px">
+        <img class="logo-dark" src="{{asset('assets/'.$settings->site_logo)}}" alt="{{asset('assets/'.$settings->site_logo)}}" width="200px">
     </div>
     <!-- ./ logo -->
 

@@ -17,7 +17,11 @@
                 <div class="ps-product ps-product--list" style="border:2px solid #d1d5dad4; border-radius:10px">
                     <div class="ps-product__content" style="border-right:0px">
                         <div class="ps-product__thumbnail"><a class="ps-product__image" href="">
-                                <figure><img src="{{$cart->model->image_path }}" alt="{{$cart->model->image_path }}">
+                                <figure>
+                                    {{-- <img src="{{$cart->model->image_path }}" alt="{{$cart->model->image_path }}"> --}}
+                                    @if(isset($cart->model->image_path))
+                                    @php echo displayImageOrVideo($cart->model->image_path,null,100); @endphp
+                                    @endif
                                 </figure>
                             </a>
                         </div>
@@ -96,7 +100,7 @@
                             <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:300px">
                                 <figure>
                                     @if(isset($prod->image_path))
-                                    @php echo displayImageOrVideo($prod->image_path); @endphp
+                                    @php echo displayImageOrVideo($prod->image_path,null,300); @endphp
                                     @endif
                                 
                                 </figure>
