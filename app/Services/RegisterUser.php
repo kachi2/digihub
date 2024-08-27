@@ -9,13 +9,14 @@ use App\Mail\RegMail;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class RegisterUser {
 
 
     public function viewCheckout(){
 
-        $carts = \Cart::content();
+        $carts = Cart::content();
         if(count($carts) > 0){
         return view('users.guest')->with('carts', $carts);
         }else{
