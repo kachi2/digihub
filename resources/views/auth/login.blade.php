@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name')}}</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href=" {{ asset('assets/images/'.$settings->fav)}}"/>
+    <link rel="shortcut icon" href=" {{ asset('images/'.$settings->fav)}}"/>
 
     <!-- Plugin styles -->
     <link rel="stylesheet" href="{{asset('/backend/vendors/bundle.css')}}" type="text/css">
@@ -32,8 +32,8 @@
 
     <!-- logo -->
     <div id="logo">
-        <img class="logo" src="{{asset('assets/'.$settings->site_logo)}}" alt="{{asset('assets/'.$settings->site_logo)}}" width="200px">
-        <img class="logo-dark" src="{{asset('assets/'.$settings->site_logo)}}" alt="{{asset('assets/'.$settings->site_logo)}}" width="200px">
+        <img class="logo" src="{{asset('images/'.$settings->site_logo)}}" alt="{{asset('images/'.$settings->site_logo)}}" width="200px">
+        <img class="logo-dark" src="{{asset('images/'.$settings->site_logo)}}" alt="{{asset('images/'.$settings->site_logo)}}" width="200px">
     </div>
     <!-- ./ logo -->
 

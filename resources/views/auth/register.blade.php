@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name')}}</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/'.$settings->fav)}}"/>
+    <link rel="shortcut icon" href="{{ asset('images/'.$settings->fav)}}"/>
 
     <!-- Plugin styles -->
     <link rel="stylesheet" href="{{asset('/backend/vendors/bundle.css')}}" type="text/css">
