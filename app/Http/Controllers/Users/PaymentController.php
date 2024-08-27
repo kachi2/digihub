@@ -25,10 +25,11 @@ class PaymentController extends Controller
      * Redirect the User to Paystack Payment Page
      * @return Url
      */
-     public function __construct(
-        public readonly PaymentService $paymentService
-     )
+
+     public $paymentService;
+     public function __construct(PaymentService $paymentService)
      {  
+      $this->paymentService = $paymentService;
      }
 
      public function InitiatePayment(PaymentRequest $request)
