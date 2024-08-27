@@ -65,7 +65,7 @@
                                              {{$rating}}({{number_format($count)}})
                                        
                                     </span>
-                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div>
+   
                                     <div class="ps-product__meta"><span class="ps-product__price" style="font-size:30px">{{moneyFormat($product->sale_price)}}
                                         <span class="ps-product__del">{{moneyFormat($product->price)}}</span> <small style="font-size: 14px"> {{$product->discount}}% off</small>
                                     </div>
@@ -83,6 +83,7 @@
                                         <i class="fa fa-cloud-download"></i> 
                                         Item will be available for download once payment is completed
                                     </div>
+                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div>
                                     <div class="ps-product__social">
                                         <ul class="ps-social ps-social--color">
                                         Share this Product
