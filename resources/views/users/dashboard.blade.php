@@ -17,7 +17,7 @@
                                 <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:300px">
                                     <figure>
                                         @if($prod->gallery)
-                                        @php echo displayImageOrVideo($prod?->image_path); @endphp
+                                        @php echo displayImageOrVideo($prod?->image_path, null, 300); @endphp
                                         @endif
                                     
                                     </figure>
