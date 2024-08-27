@@ -54,6 +54,7 @@
                                 <div class="ps-product__info">
                                     <div class="ps-product__branch"><a href="{{route('products.search', $product->category->hashid )}}">{{$product->category->name}}</a></div>
                                     <div class="ps-product__title"><a href="#">{{$product->name}}</a></div>
+                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div>
                                     <span style="float: ;"> 
                                         @php 
                                         $prod_rating = productRating($product->id);
@@ -83,7 +84,7 @@
                                         <i class="fa fa-cloud-download"></i> 
                                         Item will be available for download once payment is completed
                                     </div>
-                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div>
+                                   
                                     <div class="ps-product__social">
                                         <ul class="ps-social ps-social--color">
                                         Share this Product
