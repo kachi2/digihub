@@ -68,7 +68,7 @@ if(!function_exists('convertPercent')){
     }
 }
 if(!function_exists('displayImageOrVideo')){
-function displayImageOrVideo($file, $width=null, $height=null)
+function displayImageOrVideo($file, $width=null, $height=null, $imageWidth=null)
 {
 
     $files = explode('.', $file);
@@ -86,7 +86,7 @@ function displayImageOrVideo($file, $width=null, $height=null)
         ";
         break;
         default:
-        $output = "<img src='$file'   alt='$file' />";
+        $output = "<img src='$file'  width=$imageWidth alt='$file' />";
     }
  
     return $output;

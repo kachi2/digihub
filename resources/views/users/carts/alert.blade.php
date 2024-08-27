@@ -14,7 +14,7 @@
                         <div class="container" style="text-align: center">
                             <p class="m-0" style="color:#fff;"> 
                                 @if(isset($product->image_path))
-                                @php echo displayImageOrVideo($product->image_path, 30,30); @endphp
+                                @php echo displayImageOrVideo($product->image_path, 100,100, 100); @endphp
                                 @endif
                                 {{-- <img src="{{$product->image_path}}" style="width:30px; height:30px" alt="{{$product->image_path}}" />  --}}
                                 {{$product->name}} Added to Cart Successfully</p>

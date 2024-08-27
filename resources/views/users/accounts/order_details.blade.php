@@ -34,7 +34,9 @@
                                 <div class="ps-product__content" style="border-right:0px">
                                     <div class="ps-product__thumbnil" style="">
                                         <a class="ps-product__image" href="#">
-                                            <figure><img src="{{$order->image}}" style="width: 100px" alt="{{$order->image}}">
+                                            <figure>
+                                                {{-- <img src="{{$order->image}}" style="width: 100px" alt="{{$order->image}}"> --}}
+                                                @php echo displayImageOrVideo($order->image, 100,100, 100); @endphp
                                             </figure>
                                         </a>
                                     </div>

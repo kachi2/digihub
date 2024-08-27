@@ -5,7 +5,7 @@
      @include('users.slider.slider')
 
      <section class="ps-section--featured" style="padding:20px">
-        <p class="section-title">Products</p >
+        {{-- <p class="section-title">Products</p > --}}
         <div class="ps-section__content">
             <div class="row m-0">
 

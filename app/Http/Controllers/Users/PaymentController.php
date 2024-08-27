@@ -26,19 +26,19 @@ class PaymentController extends Controller
      * @return Url
      */
      public function __construct(
-        public readonly PaymentService $PaymentService
+        public readonly PaymentService $paymentService
      )
      {  
      }
 
      public function InitiatePayment(PaymentRequest $request)
      {
-        return $this->PaymentService->InitiatePayment($request);
+        return $this->paymentService->InitiatePayment($request);
      }
 
      public function handleGatewayCallback()
     {
-       $payment = $this->PaymentService->ProcessPaystackPayment(); 
+       $payment = $this->paymentService->ProcessPaystackPayment(); 
        if($payment){
         Session::flash('alert', 'success');
         Session::flash('msg', 'Order completed successfully');
@@ -51,7 +51,7 @@ class PaymentController extends Controller
 
     public function handlePaymentSuccess()
     {
-        $payment = $this->PaymentService->handlePaymentSuccess();
+        $payment = $this->paymentService->handlePaymentSuccess();
         if($payment){
             Session::flash('alert', 'success');
             Session::flash('msg', 'Order completed successfully');

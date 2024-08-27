@@ -24,7 +24,7 @@
                     <div class="row">
                         <span class="pt-5 pl-5"> <a href="#" onclick="history.back()"> {{_('<-back ')}} </a> <hr style="width:100%"></span>
                         <section class="ps-section--featured" style="padding:20px">
-                            <p class="section-title">Popular Products</p >
+                            <p class="section-title">Recently Viewed products</p >
                             <div class="ps-section__content">
                                 <div class="row m-0">
                     
@@ -35,7 +35,8 @@
                                                 <div class="ps-product__thumbnail ">
                                                     <a class="ps-product__image" href="{{ route('users.products', [$prod->hashid, $prod->productUrl]) }}" style="min-height:100px">
                                                         <figure>
-                                                            @php echo displayImageOrVideo($prod->image_path); @endphp
+                                                            @php echo displayImageOrVideo($prod->image_path,null,200); @endphp
+                                                            
                                                         
                                                         </figure>
                                                     </a>
