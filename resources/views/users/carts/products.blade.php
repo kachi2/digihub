@@ -65,10 +65,11 @@
                                              {{$rating}}({{number_format($count)}})
                                        
                                     </span>
+                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div>
                                     <div class="ps-product__meta"><span class="ps-product__price" style="font-size:30px">{{moneyFormat($product->sale_price)}}
                                         <span class="ps-product__del">{{moneyFormat($product->price)}}</span> <small style="font-size: 14px"> {{$product->discount}}% off</small>
                                     </div>
-                                    <div class="ps-subtitle pb-3 pt-3" >{{$product->title??null}}</div>
+                              
                                     <form id="myForm" enctype="multipart/form-data">
                                         @csrf
                                     <div class="ps-product__quantity">

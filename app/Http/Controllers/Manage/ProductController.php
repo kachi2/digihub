@@ -120,6 +120,7 @@ class ProductController extends Controller
             $prod->price = $request->price;
             $prod->discount = (($request->price - $request->discount_price) / $request->price) * 100;
             $prod->sale_price = $request->discount_price;
+            $prod->title = $request->title;
             $prod->status = 1;
             if ($request->file('image')) {
                 $image =  $this->UploadFile($request, 'images/products/');
