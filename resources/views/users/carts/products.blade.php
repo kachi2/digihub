@@ -54,7 +54,7 @@
                                 <div class="ps-product__info">
                                     <div class="ps-product__branch"><a href="{{route('products.search', $product->category->hashid )}}">{{$product->category->name}}</a></div>
                                     <div class="ps-product__title" style="font-size:24px"><a href="#">{{$product->name}}</a></div>
-                                   @if($product->title) <div class="ps-subtitle pb-3 pt-3" >{{$product->title??''}}</div> @endif
+                                   @if($product->title) <div class="ps-subtitle pb-2 pt-1" >{{$product->title??''}}</div> @endif
                                     <span style="float: ;"> 
                                         @php 
                                         $prod_rating = productRating($product->id);
