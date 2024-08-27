@@ -22,20 +22,26 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         $slider = Slider::latest()->get();
-        $data['popular'] = Product::take(8)->get();
-        $data['topProducts1'] = Product::orderBy('views', 'DESC')->take(6)->get();
-        $data['productCat1'] = Product::where('category_id', 24)->inRandomOrder()->take(9)->get();
-        $data['productCat2'] = Product::where('category_id', 3)->inRandomOrder()->take(9)->get();
-        $data['productCat3'] = Product::where('category_id', 1)->inRandomOrder()->take(9)->get();
-        $data['productCat4'] = Product::where('category_id', 4)->inRandomOrder()->take(9)->get();
-        $data['advert'] = Product::inRandomOrder()->take(3)->get();
+        $data['popular'] = Product::take(4)->inRandomOrder()->get();
+        $data['ledgers'] = Product::where('category_id', 1)->inRandomOrder()->take(4)->get();
+        $data['businesses'] = Product::where('category_id', 2)->inRandomOrder()->take(4)->get();
+        $data['Spreadsheet'] = Product::where('category_id', 4)->inRandomOrder()->take(4)->get();
+        $data['Coloring'] = Product::where('category_id', 5)->inRandomOrder()->take(4)->get();
+        $data['Digital'] = Product::where('category_id', 6)->inRandomOrder()->take(4)->get();
+        $data['Cards'] = Product::where('category_id', 7)->inRandomOrder()->take(4)->get();
+        $data['Books'] = Product::where('category_id', 8)->inRandomOrder()->take(4)->get();
+        $data['Resume'] = Product::where('category_id', 9)->inRandomOrder()->take(4)->get();
+        $data['Stationary'] = Product::where('category_id', 10)->inRandomOrder()->take(4)->get();
         addHashId($data['popular']);
-        addHashId($data['topProducts1']);
-        addHashId( $data['productCat1']);
-        addHashId( $data['productCat2']);
-        addHashId( $data['productCat3']);
-        addHashId( $data['productCat4']);
-        addHashId($data['advert']);
+        addHashId($data['ledgers']);
+        addHashId($data['businesses']);
+        addHashId($data['Spreadsheet']);
+        addHashId($data['Coloring']);
+        addHashId($data['Digital']);
+        addHashId($data['Cards']);
+        addHashId($data['Books']);
+        addHashId($data['Resume']);
+        addHashId( $data['Stationary']);
         return view('users.dashboard', $data, [
             'sliders' => $slider,
         ]);
