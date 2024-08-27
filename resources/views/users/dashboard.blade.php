@@ -10,7 +10,7 @@
             <div class="row m-0">
 
                 @forelse($popular as $prod)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -51,7 +51,7 @@
                 @empty 
                 @endforelse
                 @forelse($ledgers as $ledger)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -92,7 +92,7 @@
                 @empty 
                 @endforelse
                 @forelse($businesses as $business)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -134,7 +134,7 @@
                 @endforelse
 
                 @forelse($Spreadsheet as $Spread)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -176,7 +176,7 @@
                 @endforelse
 
                 @forelse($coloring as $color)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -218,7 +218,7 @@
                 @endforelse
 
                 @forelse($Digital as $digit)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -261,7 +261,7 @@
 
 
                 @forelse($Cards as $Card)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -303,7 +303,7 @@
                 @endforelse
 
                 @forelse($Books as $Book)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -345,7 +345,7 @@
                 @endforelse
 
                 @forelse($Resume as $Resum)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
@@ -387,7 +387,7 @@
                 @endforelse
 
                 @forelse($Stationary as $Stationar)
-                <div class="col-6 col-md-6 col-lg-3 p-0">
+                <div class="col-12 col-md-6 col-lg-3 p-0">
                     <div class="ps-section__product " >
                         <div class="ps-product ps-product--standard cart-card">
                             <div class="ps-product__thumbnail ">
