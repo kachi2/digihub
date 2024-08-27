@@ -122,12 +122,12 @@ class ProductController extends Controller
             $prod->sale_price = $request->discount_price;
             $prod->status = 1;
             if ($request->file('image')) {
-                // $image =  $this->UploadFile($request, 'images/products/');
-                // $prod->image_path = $image;
+                $image =  $this->UploadFile($request, 'images/products/');
+                $prod->image_path = $image;
             }
             if ($request->file('images')) {
-                // $images = $this->UploadFiles($request, 'images/products/');
-                //  $prod->gallery = json_encode($images);
+                $images = $this->UploadFiles($request, 'images/products/');
+                 $prod->gallery = json_encode($images);
             }
             $prod->save();
             DB::commit();
