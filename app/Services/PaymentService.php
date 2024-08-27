@@ -53,10 +53,20 @@ class PaymentService extends Funcs
         if ($paymentDetails['status'] == true) {
             $orderNo = Session::get('order_No');
             $amount = Session::get('amount');
-            Order::where('order_no', $orderNo)->update([
+            $cartItems = CartItem::where('order_no', $orderNo)->first();
+     
+          $option = [
+            'public_ids' => $cartItems->productResource->public_id,
+            'expires_at' => strtotime(Carbon::now()->addDays(31)), 
+        ];
+            $image =  cloudinary()->createZip($option);
+            $updateOrder = Order::where('Order_No', $orderNo)->first();
+            $updateOrder->update([
                 'payment_ref' => $paymentDetails['data']['reference'],
                 'is_paid' => 1,
-                'payment_method' => 'Paystack'
+                'payment_method' => 'Paystack',
+                'resources' => $image['secure_url'],
+                'is_delivered' => 1,
             ]);
             $ref = GenerateRef(10);
             Parent::createPaymentReport($orderNo, $amount, $ref, $paymentDetails['data']['reference']);
@@ -113,7 +123,7 @@ class PaymentService extends Funcs
      
         $option = [
             'public_ids' => $cartItems->productResource->public_id,
-            'expires_at' => strtotime(Carbon::now()->addSeconds(100)), 
+            'expires_at' => strtotime(Carbon::now()->addDays(31)), 
         ];
         $image =  cloudinary()->createZip($option);
         if ($session->status == 'complete') {
