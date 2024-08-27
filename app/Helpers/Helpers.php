@@ -72,9 +72,10 @@ function displayImageOrVideo($file, $width=null, $height=null)
 {
 
     $files = explode('.', $file);
+    // dd($files);
     if($files > 1)
     {
-    switch($files[1])
+    switch($files[3])
     {
         case 'mp4': 
             $file = asset('images/'.$file);
