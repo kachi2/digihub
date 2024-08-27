@@ -26,7 +26,7 @@ class HomeController extends Controller
         $data['ledgers'] = Product::where('category_id', 1)->inRandomOrder()->take(4)->get();
         $data['businesses'] = Product::where('category_id', 2)->inRandomOrder()->take(4)->get();
         $data['Spreadsheet'] = Product::where('category_id', 4)->inRandomOrder()->take(4)->get();
-        $data['Coloring'] = Product::where('category_id', 5)->inRandomOrder()->take(4)->get();
+        $data['coloring'] = Product::where('category_id', 5)->inRandomOrder()->take(4)->get();
         $data['Digital'] = Product::where('category_id', 6)->inRandomOrder()->take(4)->get();
         $data['Cards'] = Product::where('category_id', 7)->inRandomOrder()->take(4)->get();
         $data['Books'] = Product::where('category_id', 8)->inRandomOrder()->take(4)->get();
@@ -36,7 +36,7 @@ class HomeController extends Controller
         addHashId($data['ledgers']);
         addHashId($data['businesses']);
         addHashId($data['Spreadsheet']);
-        addHashId($data['Coloring']);
+        addHashId($data['coloring']);
         addHashId($data['Digital']);
         addHashId($data['Cards']);
         addHashId($data['Books']);
