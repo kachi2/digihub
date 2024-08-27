@@ -62,7 +62,7 @@
                                        $count =   $prod_rating['count'];
                                         $rates = RatingCounting($rating);
                                         @endphp
-                                        Product rating:   @php echo $rates; @endphp
+                                         Rating:   @php echo $rates; @endphp
                                              {{$rating}}({{number_format($count)}})
                                        
                                     </span>
