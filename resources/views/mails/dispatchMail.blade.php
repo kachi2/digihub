@@ -29,17 +29,13 @@
 
                                     Dear {{$data['name']}},
                                     
-                                    <p>Thank you for shopping on {{$settings->site_name}}! Your order <b>{{$data['order_No']}}</b> has been successfully Dispatched.
+                                    <p>Thank you for shopping on {{$settings->site_name}}! Your order <b>{{$data['order_No']}}</b> has been successfully Dispatched and is available for download.
                                     </p>
 
-                                          @if($data['delivery_method'] == 'home_delivery')
-                                          The package will be delivered by our delivery agent at the following address: {{$data['address'] .','.$data['city'].','.$data['state']}}.
-                                           @else
-                                           Please visit our Address at {{$settings->address}} Nigeria to pickup your packages.
-                                           @endif
-                                        You will receive an SMS on {{$data['phone']}}..        
+                                          
+                                        Please check your account orders for the download links        
                                        <table class="m_8958432110786407146orderinfotable" style="border:1px solid #ccc;margin:0;padding:0;width:100%;table-layout:fixed">
-                                            <caption class="m_8958432110786407146orderinfocaption" style="font-weight:bold;text-align:left;padding-top:10px">Items on this delivery:</caption>
+                                            <caption class="m_8958432110786407146orderinfocaption" style="font-weight:bold;text-align:left;padding-top:10px">Items available for downnload:</caption>
                                             <thead class="m_8958432110786407146orderinfohead" style="text-align:center">
                                                 <tr class="m_8958432110786407146orderinfohead" style="background:#f8f8f8;border:1px solid #ddd;text-transform:uppercase">
                                                     <th scope="col" style="width:15%"></th>
@@ -53,7 +49,8 @@
                                                     <tr class="m_8958432110786407146orderinfotr" style="border:1px solid #ddd;text-align:center">
                                                         <td class="m_8958432110786407146orderinfotd">
                                                             <center style="overflow:hidden;max-width:100%">
-                                                                <input type="image" class="m_8958432110786407146itemimage" src="{{$orders->image}}" width="100px" height="100px">
+                                                                @php echo displayImageOrVideo($orders?->image, null, 100); @endphp
+                                                                {{-- <input type="image" class="m_8958432110786407146itemimage" src="{{$orders->image}}" width="100px" height="100px"> --}}
                                                             </center>
                                                         </td>
                                                         <td class="m_8958432110786407146orderinfotd"><span class="m_8958432110786407146itemlabel" style="display:none;overflow:hidden;font-size:0px">Item</span>

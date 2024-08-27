@@ -52,15 +52,7 @@
                                                                     align="right" valign="top">{{moneyFormat($data['amount'])}}
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 10px 0;"
-                                                                    valign="top">Payment Method
-                                                                </td>
-                                                                <td class="alignright"
-                                                                    style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 14px; vertical-align: top; text-align: right; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 10px 0;"
-                                                                    align="right" valign="top">Card Payment
-                                                                </td>
-                                                            </tr>
+                                                          
                                                             <tr>
                                                                 <td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 14px; vertical-align: top; border-top-width: 1px; border-top-color: #eee; border-top-style: solid; margin: 0; padding: 10px 0;"
                                                                     valign="top">Order No

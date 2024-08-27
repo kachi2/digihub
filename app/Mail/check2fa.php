@@ -30,6 +30,6 @@ class check2fa extends Mailable
      */
     public function build()
     {
-        return $this->from('superadmin@livehealthepharma.com', ' M3Digihub')->subject($this->data['subject'])->view('mails.check2fa')->with('data', $this->data);
+        return $this->from('support@m3digihub.com', ' M3Digihub')->subject($this->data['subject'])->view('mails.check2fa')->with('data', $this->data);
     }
 }

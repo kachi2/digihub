@@ -30,6 +30,6 @@ class DispatchMail extends Mailable
      */
     public function build()
     {
-        return $this->from('superadmin@mazeoptions.com', 'M3Digihub')->subject('Order Dispatched')->view('mails.dispatchMail')->with('data', $this->data);
+        return $this->from('support@m3digihub.com', 'M3Digihub')->subject('Order Dispatched')->view('mails.dispatchMail')->with('data', $this->data);
     }
 }
