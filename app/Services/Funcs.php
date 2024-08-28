@@ -16,7 +16,7 @@ class Funcs
         'payment_ref' => $ref, 
         'external_ref' => $external_ref, 
         'status' => 1, 
-        'payable' => $amount/100
+        'payable' => $amount
     ]);
 
 }
@@ -24,7 +24,7 @@ class Funcs
 public function SendOrderMail($order_no,$amount, $ref,$external_ref)
 {
     Mail::to(auth_user()->email)->send(new paymentMail([
-        'amount' => $amount/100,
+        'amount' => $amount,
         'order_No' => $order_no,
         'payment_ref' => $ref,
         'external_ref' => $external_ref,

@@ -44,6 +44,7 @@ class PaymentService extends Funcs
         );
         Parent::createOrder($req);
         Session::put('order_No', $req->orderNo);
+        Session::get('amount',$req->amount);
         return Paystack::getAuthorizationUrl($data)->redirectNow();
     }
 
@@ -106,7 +107,7 @@ class PaymentService extends Funcs
         Parent::createOrder($request);
         Session::put('session_id', $session->id);
         Session::put('order_No', $request->orderNo);
-        Session::put('amount', $request->total);
+        Session::put('amount', $request->amount);
         return redirect()->away($session->url);
     }
 
