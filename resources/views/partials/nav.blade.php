@@ -6,7 +6,7 @@
                     <li class="has-mega-menu"><a href="{{route('products.search')}}" style=""> <i class="fa fa-bars"></i>All Categories<span class="sub-toggle"></span></a>
                         </li>
                         @forelse($site_category->take(6) as $menu)
-                        <li class="has-mega-menu"><a href="{{route('products.search')}}" style="">{{$menu->name}}<span class="sub-toggle"></span></a>
+                        <li class="has-mega-menu"><a href="{{route('products.search',$menu->hashid )}}" style="">{{$menu->name}}<span class="sub-toggle"></span></a>
                           {{-- <div class="mega-menu">
                                 <div class="container">
                                     <div class="mega-menu__row">
