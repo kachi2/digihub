@@ -30,6 +30,6 @@ class RegMail extends Mailable
      */
     public function build()
     {
-        return $this->from('superadmin@mazeoptions.com', 'Digihub Support')->subject('User Registeration Details')->view('mails.regMail')->with('data', $this->data);
+        return $this->from('support@m3digihub.com', 'Digihub Support')->subject('User Registeration Details')->view('mails.regMail')->with('data', $this->data);
     }
 }
