@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <meta name="title" content="">
-    <meta name="description" content="">
+    <meta name="title" content="m3digihub.com Find the perfect template gift, resume template & spreasheets, unique designs, and more… lots more">
+    <meta name="description" content="Show off your brand identity with a custom creative logo design such as 2D logo design, 3D logo design online and offline for your business by our professional graphic designer within Lagos Nigeria.">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="{{ asset('images/'.$settings->fav)}}" rel="shortcut icon" type="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="author" content="Live Health epharm">
-    <meta name="application-name" content="">
-    <meta property="og:site_name" content="">
+    <meta name="author" content="https:://m3digihub.com ">
+    <meta name="application-name" content="et the latest 2023 Excel Template to prepare your Nigerian Payroll. Calculate PAYE, Pensions, NHF and other employee deductions in 1 minute">
+    <meta property="og:site_name" content="m3digihub.com">
     <meta property="og:image" content="{{asset('images/'.$settings->site_logo)}}">
-    <meta name="twitter:description" content="Online Pharmacy in Nigeria">
+    <meta name="twitter:description" content="https:://m3digihub.com Excel Templates and Software in Nigeria :: Browse 1000s of softwares and Excel Templates in Nigeria. Software Hub NG is your best plug to download productivity templates and business software for financial institutions, schools, small and emerging businesses, hospital et">
     <meta name="twitter:image" content="{{asset('images/'.$settings->site_logo)}}">
-    <meta property="og:description" content="">
-    <meta name="keywords" content="">
+    <meta property="og:description" content="Excel Templates and Software in Nigeria :: Browse 1000s of softwares and Excel Templates in Nigeria. Software Hub NG is your best plug to download productivity templates and business software for financial institutions, schools, small and emerging businesses, hospital et">
+    <meta name="keywords" content="get the latest 2023 Excel Template to prepare your Nigerian Payroll. Calculate PAYE, Pensions, NHF and other employee deductions in 1 minute ">
     <meta property="og:url" content="{{route('users.index')}}">
-    <meta property="og:title" content="">
-    <title>{{$settings->title}} </title>
+    <meta property="og:title" content="get the latest 2023 Excel Template to prepare your Nigerian Payroll. Calculate PAYE, Pensions, NHF and other employee deductions in 1 minute">
+    <title> {{config('app.name')}} | @if(isset($title)) {{$title}} @endif </title>
     <link rel="stylesheet" href="{{asset('/frontend/plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('/frontend/fonts/Linearicons/Font/demo-files/demo.css')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com/">
@@ -38,7 +38,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <meta name="p:domain_verify" content="41e4054dd47a348a28e771a36e9e5092"/>
+
     @yield('styles')
 </head>
 <body>
