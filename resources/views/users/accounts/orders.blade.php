@@ -40,7 +40,9 @@
                                             <a href="{{route('users.orders.details',$order->Order_no)}}" style="color:#5e5b5b">Order: {{$order->Order_no}}</a><br>
                                             {{moneyFormat($order->payable,2)}}</span> <br>
                                             @if($order->is_paid == 1) <span class="badge badge-success"> Paid</span>
-                                            @else <span class="badge badge-warning"> Not Paid</span> @endif
+                                            @else <span class="badge badge-warning"> Not Paid</span>
+                                            <a href="{{route('payment.checkout')}}"> completed payment</a>
+                                            @endif
                                         </p>
                                         <ul class="ps-product__list">
                                             <li> <span class="ps-list__title">Date Ordered: </span><a class="ps-list__text" href="#">{{$order->created_at}}</a>
