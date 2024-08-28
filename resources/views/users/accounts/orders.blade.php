@@ -41,7 +41,7 @@
                                             {{moneyFormat($order->payable,2)}}</span> <br>
                                             @if($order->is_paid == 1) <span class="badge badge-success"> Paid</span>
                                             @else <span class="badge badge-warning"> Not Paid</span>
-                                            <a href="{{route('payment.checkout')}}"> completed payment</a>
+                                           <small><a href="{{route('payment.checkout')}}" class="btn btn-info"> Pay Now</a></small> 
                                             @endif
                                         </p>
                                         <ul class="ps-product__list">
