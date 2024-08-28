@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion" id="accordionExampleTwo">
+                                {{-- <div class="accordion" id="accordionExampleTwo">
                                     <div class="card">
                                         <div class="card-header" id="headingTwo">
                                             <label data-toggle="collapse" data-target="#collapseTwo"
@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
