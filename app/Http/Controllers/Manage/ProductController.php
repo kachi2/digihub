@@ -136,7 +136,7 @@ class ProductController extends Controller
         }catch(\Exception $e) {
             DB::rollBack();
             Session::flash('alert', 'error');
-            Session::flash('message', $e);
+            Session::flash('message', $e->getMessage());
             return redirect()->back()->withErrors($valid)->withInput($request->all());
         }
 
@@ -214,7 +214,8 @@ class ProductController extends Controller
             }
         } catch (\Exception $e) {
             DB::rollBack();
-            throw $e;
+            Session::flash('alert', 'success');
+            Session::flash('message',$e->getMessage());
         }
     }
 
